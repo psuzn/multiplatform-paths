@@ -1,7 +1,7 @@
 plugins {
-  kotlin("multiplatform")
-  id("com.android.application")
-  id("org.jetbrains.compose")
+  alias(libs.plugins.kotlin.multiplatform)
+  alias(libs.plugins.android.application)
+  alias(libs.plugins.compose)
 }
 
 kotlin {
@@ -14,17 +14,10 @@ kotlin {
 
     androidMain {
       dependencies {
-
-        implementation("com.google.android.gms:play-services-wearable:18.1.0")
-        implementation(project.dependencies.platform("androidx.compose:compose-bom:2023.08.00"))
         implementation(project(":sample:shared"))
         implementation(project(":platformIdentifier"))
-
-        implementation("androidx.compose.ui:ui")
-        implementation("androidx.compose.ui:ui-tooling-preview")
-        implementation("androidx.wear.compose:compose-material:1.2.1")
-        implementation("androidx.wear.compose:compose-foundation:1.2.1")
-        implementation("androidx.activity:activity-compose:1.8.1")
+        implementation (libs.appcompat)
+        implementation(libs.activity.compose)
       }
     }
   }
@@ -32,12 +25,12 @@ kotlin {
 
 android {
   namespace = "${Artifact.BASE_ID}.sample.wearOs"
-  compileSdk = Artifact.ANDROID_COMPILE_SDK
+  compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
     applicationId = "${Artifact.BASE_ID}.sample"
     minSdk = 30
-    targetSdk = Artifact.ANDROID_TARGET_SDK
+    targetSdk = libs.versions.targetSdk.get().toInt()
     versionCode = Artifact.VERSION_CODE
     versionName = Artifact.VERSION_NAME
 
@@ -47,7 +40,7 @@ android {
   }
 
   composeOptions {
-    kotlinCompilerExtensionVersion = Versions.COMPOSE_COMPILER
+    kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
   }
 
   compileOptions {

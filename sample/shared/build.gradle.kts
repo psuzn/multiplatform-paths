@@ -3,9 +3,9 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import org.jetbrains.kotlin.gradle.targets.js.JS
 
 plugins {
-  kotlin("multiplatform")
-  id("com.android.library")
-  id("org.jetbrains.compose")
+  alias(libs.plugins.kotlin.multiplatform)
+  alias(libs.plugins.android.library)
+  alias(libs.plugins.compose)
 }
 
 version = "1.0-SNAPSHOT"
@@ -40,13 +40,13 @@ kotlin {
 
     val commonMain by getting {
       dependencies {
-        implementation(compose.runtime)
-        implementation(compose.ui)
-        implementation(compose.material)
-        implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.0")
         implementation(project(":platformIdentifier"))
         implementation(project(":paths"))
 
+        implementation(compose.runtime)
+        implementation(compose.ui)
+        implementation(compose.material)
+        implementation(libs.kotlinx.io.core)
       }
     }
 
@@ -76,13 +76,14 @@ kotlin {
 
 android {
   namespace = "${Artifact.BASE_ID}.sample.common"
-  compileSdk = Artifact.ANDROID_COMPILE_SDK
+  compileSdk = libs.versions.compileSdk.get().toInt()
+
   sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
   sourceSets["main"].res.srcDirs("src/androidMain/res")
   sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
   defaultConfig {
-    minSdk = Artifact.ANDROID_MIN_SDK
+    minSdk = libs.versions.minSdk.get().toInt()
   }
 
   buildFeatures {
@@ -91,7 +92,7 @@ android {
   }
 
   composeOptions {
-    kotlinCompilerExtensionVersion = Versions.COMPOSE_COMPILER
+    kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
   }
 
   compileOptions {
