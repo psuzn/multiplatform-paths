@@ -1,5 +1,5 @@
 plugins {
-  kotlin("multiplatform")
+  alias(libs.plugins.kotlin.multiplatform)
 }
 
 kotlin {
@@ -14,9 +14,10 @@ kotlin {
   sourceSets {
     commonMain {
       dependencies {
-        implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.0")
         implementation(project(":platformIdentifier"))
         implementation(project(":paths"))
+
+        implementation(libs.kotlinx.io.core)
       }
     }
   }

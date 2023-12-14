@@ -1,7 +1,7 @@
 
 plugins {
-  kotlin("multiplatform")
-  id("org.jetbrains.compose")
+  alias(libs.plugins.kotlin.multiplatform)
+  alias(libs.plugins.compose)
 }
 
 kotlin {
@@ -20,9 +20,7 @@ kotlin {
         implementation(compose.runtime)
         implementation(compose.foundation)
         implementation(compose.ui)
-        implementation(compose.material3)
-        implementation(compose.materialIconsExtended)
-
+        
         implementation(project(":sample:shared"))
       }
     }

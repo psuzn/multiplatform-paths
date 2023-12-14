@@ -2,10 +2,9 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinJsCompilerType.IR
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
-  kotlin("multiplatform")
-  id("com.android.library")
-  `maven-publish`
-  signing
+  alias(libs.plugins.kotlin.multiplatform)
+  alias(libs.plugins.android.library)
+  alias(libs.plugins.mavenPublish)
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -40,14 +39,18 @@ kotlin {
 
   js(IR) {
     nodejs()
-    browser()
+    browser{
+      testTask{
+        enabled = false
+      }
+    }
     generateTypeScriptDefinitions()
   }
 
   sourceSets {
-   val commonMain by getting {
+    val commonMain by getting {
       dependencies {
-        implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.0")
+        implementation(libs.kotlinx.io.core)
       }
     }
 
@@ -60,6 +63,15 @@ kotlin {
     androidMain {
       dependencies {
         api(project(":contextProvider"))
+      }
+    }
+
+    val androidUnitTest by getting {
+      dependencies {
+        implementation(libs.junit)
+        implementation(libs.robolectric)
+        implementation(libs.ext.junit)
+        implementation(libs.espresso.core)
       }
     }
 
@@ -84,10 +96,10 @@ kotlin {
 
 android {
   namespace = "${Artifact.BASE_ID}.platformIdentifier"
-  compileSdk = Artifact.ANDROID_COMPILE_SDK
+  compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
-    minSdk = Artifact.ANDROID_MIN_SDK
+    minSdk = libs.versions.minSdk.get().toInt()
 
     ndk {
       abiFilters += listOf(
@@ -99,7 +111,9 @@ android {
     }
   }
 
-  composeOptions {
-    kotlinCompilerExtensionVersion = Versions.COMPOSE_COMPILER
+  testOptions {
+    unitTests {
+      isIncludeAndroidResources = true
+    }
   }
 }
