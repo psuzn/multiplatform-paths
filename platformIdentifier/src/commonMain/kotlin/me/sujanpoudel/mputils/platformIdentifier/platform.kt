@@ -1,6 +1,8 @@
 package me.sujanpoudel.mputils.platformIdentifier
 
-
+/**
+ * CPU Architecture
+ */
 enum class Arch {
   UNKNOWN,
   X64,
@@ -11,6 +13,9 @@ enum class Arch {
 
 sealed class Platform {
 
+  /**
+   * Running on JS vm environment
+   */
   sealed class JS : Platform() {
     data class Node(val os: OS, val nodeVersion: String, val v8Version: String) : JS()
     data class Browser(val userAgent: String) : JS()
@@ -28,14 +33,15 @@ sealed class Platform {
       val buildNumber: Int,
       val androidVersion: String,
       val isWatch: Boolean,
-      val isTv: Boolean
+      val isTv: Boolean,
     ) : OS(arch)
 
     data class Linux(override val arch: Arch, val version: String) : OS(arch)
     data class Windows(override val arch: Arch, val version: String) : OS(arch)
   }
-
 }
 
-
+/**
+ * Get current platform
+ */
 expect fun platform(): Platform

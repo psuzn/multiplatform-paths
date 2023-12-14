@@ -1,6 +1,5 @@
 package me.sujanpoudel.mputils.platformIdentifier
 
-
 internal fun getNodePlatform(): Platform.JS.Node {
   val osName = eval("require('os').type()") as String
   val archName = eval("require('os').arch()") as String
@@ -12,4 +11,3 @@ internal fun getNodePlatform(): Platform.JS.Node {
     v8Version = eval("process.versions.v8") as String,
   )
 }
-

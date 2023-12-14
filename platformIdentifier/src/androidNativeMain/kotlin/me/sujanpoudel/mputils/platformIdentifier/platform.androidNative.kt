@@ -8,7 +8,6 @@ import kotlinx.cinterop.toKString
 import platform.posix.__system_property_get
 import kotlin.experimental.ExperimentalNativeApi
 
-
 const val SYSTEM_PROP_BUILD_VERSION = "ro.build.version.sdk"
 const val SYSTEM_PROP_OS_VERSION = "ro.build.version.release"
 
@@ -26,10 +25,9 @@ actual fun platform(): Platform {
     buildNumber = buildSdk,
     androidVersion = androidVersion,
     isWatch = false,
-    isTv = false
+    isTv = false,
   )
 }
-
 
 @OptIn(ExperimentalForeignApi::class)
 private fun getSystemProp(prop: String): String = memScoped {

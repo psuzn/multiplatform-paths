@@ -1,21 +1,19 @@
-package me.sujanpoudel.mputils.contextProvider
+package me.sujanpoudel.mputils.platformIdentifier
 
-import android.app.Application
 import android.content.Context
 import android.net.Uri
 import androidx.test.core.app.ApplicationProvider
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.shadows.ShadowContentResolver
+import kotlin.test.assertIs
 
 @RunWith(RobolectricTestRunner::class)
-class ApplicationContextInitializerTest {
+class PlatformTest {
 
   @Test
-  fun `should initialize application context`() {
+  fun should_have_correct_platform() {
     val context = ApplicationProvider.getApplicationContext<Context>()
 
     val authority = "${context.packageName}.androidx-startup"
@@ -27,7 +25,8 @@ class ApplicationContextInitializerTest {
 
     ShadowContentResolver.getProvider(uri)
 
-    assertEquals(applicationContext, context)
-    assertTrue(applicationContext is Application)
+    val platform = platform()
+
+    assertIs<Platform.OS.Android>(platform)
   }
 }

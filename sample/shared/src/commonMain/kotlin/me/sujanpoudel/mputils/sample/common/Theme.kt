@@ -15,7 +15,7 @@ private val DarkColorPalette = darkColors(
   onPrimary = Color.White,
   secondary = SampleGreen,
   onSecondary = Color.White,
-  error = Red200
+  error = Red200,
 )
 
 private val LightColorPalette = lightColors(
@@ -27,13 +27,15 @@ private val LightColorPalette = lightColors(
   secondary = SampleGreen,
   secondaryVariant = SampleGreenDark,
   onSecondary = Color.White,
-  error = Red800
+  error = Red800,
 )
 
 @Composable
 fun SampleTheme(
   darkTheme: Boolean = isSystemInDarkTheme(),
-  content: @Composable() () -> Unit
+  content:
+    @Composable()
+    () -> Unit,
 ) {
   val colors = if (darkTheme) {
     DarkColorPalette
@@ -43,6 +45,6 @@ fun SampleTheme(
 
   MaterialTheme(
     colors = colors,
-    content = content
+    content = content,
   )
 }
