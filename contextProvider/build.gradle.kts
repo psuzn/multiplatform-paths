@@ -1,9 +1,8 @@
 
 plugins {
-  id("com.android.library")
-  kotlin("multiplatform")
-  `maven-publish`
-  signing
+  alias(libs.plugins.android.library)
+  alias(libs.plugins.kotlin.multiplatform)
+  alias(libs.plugins.mavenPublish)
 }
 
 
@@ -16,16 +15,16 @@ kotlin {
   sourceSets {
     androidMain {
       dependencies {
-        api("androidx.startup:startup-runtime:1.1.1")
+        api(libs.startup.runtime)
       }
     }
 
     val androidUnitTest by getting {
       dependencies {
-        implementation("junit:junit:4.13.2")
-        implementation("androidx.test.ext:junit:1.1.5")
-        implementation("androidx.test.espresso:espresso-core:3.5.1")
-        implementation("org.robolectric:robolectric:4.11.1")
+        implementation(libs.junit)
+        implementation(libs.ext.junit)
+        implementation(libs.espresso.core)
+        implementation(libs.robolectric)
       }
     }
   }
@@ -33,10 +32,10 @@ kotlin {
 
 android {
   namespace = "${Artifact.BASE_ID}.contextProvider"
-  compileSdk = Artifact.ANDROID_COMPILE_SDK
+  compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
-    minSdk = Artifact.ANDROID_MIN_SDK
+    minSdk = libs.versions.minSdk.get().toInt()
   }
 
   buildTypes {

@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithHostTests
 
 plugins {
-  kotlin("multiplatform")
-  id("org.jetbrains.compose")
+  alias(libs.plugins.kotlin.multiplatform)
+  alias(libs.plugins.compose)
 }
 
 fun KotlinNativeTargetWithHostTests.makeExecutableBinary() {
@@ -21,12 +21,9 @@ kotlin {
 
     macosMain {
       dependencies {
-        implementation(compose.ui)
-        implementation(compose.foundation)
-        implementation(compose.material)
-        @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-        implementation(compose.components.resources)
         implementation(project(":sample:shared"))
+
+        implementation(compose.ui)
       }
     }
   }

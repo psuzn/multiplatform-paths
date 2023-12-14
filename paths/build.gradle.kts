@@ -1,10 +1,9 @@
 import org.jetbrains.kotlin.gradle.plugin.KotlinJsCompilerType.IR
 
 plugins {
-  kotlin("multiplatform")
-  id("com.android.library")
-  `maven-publish`
-  signing
+  alias(libs.plugins.kotlin.multiplatform)
+  alias(libs.plugins.android.library)
+  alias(libs.plugins.mavenPublish)
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -28,15 +27,14 @@ kotlin {
 
   js() {
     nodejs()
-    browser()
   }
 
   sourceSets {
 
     val commonMain by getting {
       dependencies {
-        implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.3.0")
         implementation(project(":platformIdentifier"))
+        implementation(libs.kotlinx.io.core)
       }
     }
 
@@ -93,14 +91,10 @@ kotlin {
 
 android {
   namespace = "${Artifact.BASE_ID}.paths"
-  compileSdk = Artifact.ANDROID_COMPILE_SDK
+  compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
-    minSdk = Artifact.ANDROID_MIN_SDK
-  }
-
-  composeOptions {
-    kotlinCompilerExtensionVersion = Versions.COMPOSE_COMPILER
+    minSdk = libs.versions.minSdk.get().toInt()
   }
 
   publishing {

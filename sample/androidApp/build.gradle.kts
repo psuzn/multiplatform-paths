@@ -1,7 +1,7 @@
 plugins {
-  kotlin("multiplatform")
-  id("com.android.application")
-  id("org.jetbrains.compose")
+  alias(libs.plugins.kotlin.multiplatform)
+  alias(libs.plugins.android.application)
+  alias(libs.plugins.compose)
 }
 
 kotlin {
@@ -12,27 +12,28 @@ kotlin {
       dependencies {
         implementation(project(":sample:shared"))
         implementation(project(":platformIdentifier"))
-        api("androidx.activity:activity-compose:1.8.1")
-        api("androidx.core:core-ktx:1.12.0")
+
+        implementation(libs.activity.compose)
+        implementation(libs.core.ktx)
       }
     }
   }
 }
 
 android {
-  compileSdk = Artifact.ANDROID_COMPILE_SDK
+  compileSdk = libs.versions.compileSdk.get().toInt()
   namespace = "${Artifact.BASE_ID}.sample"
 
   defaultConfig {
     applicationId = "${Artifact.BASE_ID}.sample"
-    minSdk = Artifact.ANDROID_MIN_SDK
-    targetSdk = Artifact.ANDROID_TARGET_SDK
+    minSdk = libs.versions.minSdk.get().toInt()
+    targetSdk = libs.versions.targetSdk.get().toInt()
     versionCode = Artifact.VERSION_CODE
     versionName = Artifact.VERSION_NAME
   }
 
   composeOptions {
-    kotlinCompilerExtensionVersion = Versions.COMPOSE_COMPILER
+    kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
   }
 
   compileOptions {
