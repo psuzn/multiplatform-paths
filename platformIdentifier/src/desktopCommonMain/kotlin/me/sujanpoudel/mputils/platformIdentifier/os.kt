@@ -4,9 +4,8 @@ enum class DesktopOs {
   Macos,
   Linux,
   Windows,
-  Unknown
+  Unknown,
 }
-
 
 private fun hostOs(name: String) = name.lowercase().let { osName ->
   when {
@@ -20,13 +19,11 @@ private fun hostOs(name: String) = name.lowercase().let { osName ->
   }
 }
 
-
 internal fun hostOs(
   osName: String,
   archName: String,
-  version: String
+  version: String,
 ): Platform.OS {
-
   val arch = hostArch(archName)
   return when (hostOs(osName)) {
     DesktopOs.Macos -> Platform.OS.MacOs(arch, version)
@@ -35,4 +32,3 @@ internal fun hostOs(
     DesktopOs.Unknown -> Platform.OS.Unknown(arch, version)
   }
 }
-

@@ -1,15 +1,14 @@
 package me.sujanpoudel.mputils.sample
 
-import me.sujanpoudel.mputils.paths.applicationCacheDirectory
-import me.sujanpoudel.mputils.paths.applicationHomeDirectory
+import me.sujanpoudel.mputils.paths.appDataDirectory
+import me.sujanpoudel.mputils.paths.applicationCacheDir
 import me.sujanpoudel.mputils.platformIdentifier.platform
 
 const val appId = "me.sujanpoudel.mpUtils.sample"
 
 fun main() {
-
   println(
-  """
+    """
       _   _           _                 _           _____                       _
      | \ | |         | |               | |         / ____|                     | |
      |  \| | ___   __| | ___           | |___     | (___   __ _ _ __ ___  _ __ | | ___
@@ -19,13 +18,11 @@ fun main() {
                                                                    | |
                                                                    |_|
 
-  """.trimIndent()
+    """.trimIndent(),
   )
-
 
   println("platform is: ${platform()}")
   println("Paths")
-  println("Application directory: ${applicationHomeDirectory(appId)}")
-  println("Cache directory: ${applicationCacheDirectory(appId)} \n\n")
+  println("Application directory: ${appDataDirectory(appId)}")
+  println("Cache directory: ${applicationCacheDir(appId)} \n\n")
 }
-

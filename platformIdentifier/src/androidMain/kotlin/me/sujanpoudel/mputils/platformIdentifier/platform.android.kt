@@ -4,21 +4,19 @@ import android.content.pm.PackageManager
 import android.os.Build
 import me.sujanpoudel.mputils.contextProvider.applicationContext
 
-
 actual fun platform(): Platform {
-
   return Platform.OS.Android(
     arch = arch(),
     buildNumber = Build.VERSION.SDK_INT,
     androidVersion = Build.VERSION.RELEASE,
     isWatch = applicationContext.packageManager.hasSystemFeature(PackageManager.FEATURE_WATCH),
-    isTv = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+    isTv = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
       applicationContext.packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK_ONLY)
-    else applicationContext.packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK)
+    } else {
+      applicationContext.packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK)
+    },
   )
-
 }
-
 
 private fun arch(): Arch {
   Build.SUPPORTED_ABIS.orEmpty().forEach {

@@ -6,15 +6,13 @@ import androidx.activity.compose.setContent
 import me.sujanpoudel.mputils.sample.common.SampleMainAndroid
 
 class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
 
-        super.onCreate(savedInstanceState)
+    setTheme(android.R.style.Theme_DeviceDefault)
 
-        setTheme(android.R.style.Theme_DeviceDefault)
-
-        setContent {
-          SampleMainAndroid()
-        }
+    setContent {
+      SampleMainAndroid()
     }
+  }
 }
-

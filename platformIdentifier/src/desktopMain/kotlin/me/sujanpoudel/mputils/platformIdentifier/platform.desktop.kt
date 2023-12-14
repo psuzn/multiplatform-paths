@@ -1,6 +1,5 @@
 package me.sujanpoudel.mputils.platformIdentifier
 
-
 val hostOs: Platform.OS = hostOs(
   osName = System.getProperty("os.name"),
   archName = System.getProperty("os.arch"),

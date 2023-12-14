@@ -11,4 +11,3 @@ fun main() = onWasmReady {
     MainUI()
   }
 }
-

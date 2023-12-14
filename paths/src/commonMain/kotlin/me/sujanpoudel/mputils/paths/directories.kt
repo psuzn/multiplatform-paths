@@ -3,18 +3,31 @@ package me.sujanpoudel.mputils.paths
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
 
-internal expect fun homeDirectory(appId: String): Path
+internal expect fun dataDirectory(appId: String): Path
 
 internal expect fun cacheDirectory(appId: String): Path
 
-
-fun applicationHomeDirectory(appId: String, createDir: Boolean = true): Path = homeDirectory(appId).also {
+/**
+ *  @returns Platform specific app data directory, on Android and IOS it is a secure directory
+ * inaccessible from user and other application.
+ *
+ * @param appId unique app id, equivalent to packageName(android), bundle id (ios)
+ * @param createDir whether explicitly should create the directory if it doesn't exists
+ */
+fun appDataDirectory(appId: String, createDir: Boolean = true): Path = dataDirectory(appId).also {
   if (createDir) {
     SystemFileSystem.createDirectories(it)
   }
 }
 
-fun applicationCacheDirectory(appId: String, createDir: Boolean = true): Path = cacheDirectory(appId).also {
+/**
+ * App specific cache directory
+ * on android it is context.cacheDir and on IOS/darwin it is NSCachesDirectory
+ *
+ * @param appId unique app id, equivalent to packageName(android), bundle id (ios)
+ * @param createDir whether explicitly should create the directory if it doesn't exists
+ */
+fun applicationCacheDir(appId: String, createDir: Boolean = true): Path = cacheDirectory(appId).also {
   if (createDir) {
     SystemFileSystem.createDirectories(it)
   }
