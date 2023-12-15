@@ -15,7 +15,7 @@ kotlin {
     androidMain {
       dependencies {
         implementation(project(":sample:shared"))
-        implementation(project(":platformIdentifier"))
+        implementation(project(":platform-identifier"))
         implementation (libs.appcompat)
         implementation(libs.activity.compose)
       }

@@ -11,7 +11,7 @@ kotlin {
     val androidMain by getting {
       dependencies {
         implementation(project(":sample:shared"))
-        implementation(project(":platformIdentifier"))
+        implementation(project(":platform-identifier"))
 
         implementation(libs.activity.compose)
         implementation(libs.core.ktx)

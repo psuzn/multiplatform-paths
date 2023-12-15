@@ -33,7 +33,7 @@ kotlin {
 
     val commonMain by getting {
       dependencies {
-        implementation(project(":platformIdentifier"))
+        implementation(project(":platform-identifier"))
         implementation(libs.kotlinx.io.core)
       }
     }
@@ -47,7 +47,7 @@ kotlin {
 
     val androidMain by getting {
       dependencies {
-        api(project(":contextProvider"))
+        api(project(":context-provider"))
       }
     }
 

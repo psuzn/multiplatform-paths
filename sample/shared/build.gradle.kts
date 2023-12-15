@@ -40,7 +40,7 @@ kotlin {
 
     val commonMain by getting {
       dependencies {
-        implementation(project(":platformIdentifier"))
+        implementation(project(":platform-identifier"))
         implementation(project(":paths"))
 
         implementation(compose.runtime)
