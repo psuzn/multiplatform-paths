@@ -4,8 +4,9 @@ MP Utils is a collection of a few utility libraries for developing multiplatform
 
 ## Libraries
 
-- `me.sujanpoudel.mpUtils:paths` : Get app data and cache directory
-- `me.sujanpoudel.mpUtils:platform-identifier` : Identify the current platform
+- `me.sujanpoudel.mpUtils:paths` : Get platform specific app data and cache directory(equivalent
+  to `ApplicationInfo.dataDir` or `NSHomeDirectory`).
+- `me.sujanpoudel.mpUtils:platform-identifier` : Identify the current platform.
 - `me.sujanpoudel.mpUtils:context-provider` : Get android context anywhere on your android source-set.
 
 ## Table of content
@@ -46,7 +47,7 @@ val dataDirectory = appDataDirectory(packageName)
 ```
 
 This will return `ApplicationInfo.dataDir` on android, `NSHomeDirectory` on IOS and equivalent platform specific data
-directory on other platforms
+directory on other platforms.
 
 #### Getting App cache directory
 
@@ -60,6 +61,14 @@ val dataDirectory = applicationCacheDirectory(packageName)
 
 This will return `Context.cacheDir` on android, `NSCachesDirectory` on IOS and equivalent platform specific caches
 directory on other platforms
+
+| Platform            | Cache Directory                     | Data Directory                             |
+|---------------------|-------------------------------------|--------------------------------------------|
+| Android             | `context.cacheDir`                  | `ApplicationInfo.dataDir`                  |
+| IOS/IpadOs/WatchOs  | `NSCachesDirectory`                 | `NSHomeDirectory`                          |
+| Mac Native/JVM/Node | `~/Library/Caches/<app-id>`         | `~/Library/Application Support/<app-id>`   |
+| Windows JVM/Node    | `C:\Users\<user>\AppData/<app-id>>` | `C:\Users\<user>\AppData/Cachaes/<app-id>` |
+| Linux JVM/Node      | `~/local/share/<app-id>`            | `~/.cache/<app-id>`                        |
 
 ## Platform Identifier
 
