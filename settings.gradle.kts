@@ -9,8 +9,8 @@ pluginManagement {
 rootProject.name = "MP_Utils"
 
 include(":paths")
-include(":contextProvider")
-include(":platformIdentifier")
+include(":context-provider")
+include(":platform-identifier")
 
 include(":sample:androidApp")
 include(":sample:desktopApp")

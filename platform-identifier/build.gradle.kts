@@ -62,7 +62,7 @@ kotlin {
 
     androidMain {
       dependencies {
-        api(project(":contextProvider"))
+        api(project(":context-provider"))
       }
     }
 
