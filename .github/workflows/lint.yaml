@@ -27,11 +27,16 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Validate Gradle wrapper
-        uses: gradle/wrapper-validation-action@v1.1.0
-
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2.1.0
+      - name: Checkout Gradle Build Cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+            !~/.gradle/wrapper/dists/**/gradle*.zip
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            gradle-${{ runner.os }}-
 
       - name: Build Project
         run: ./gradlew build
