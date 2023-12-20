@@ -22,14 +22,14 @@ kotlin {
 
 android {
   compileSdk = libs.versions.compileSdk.get().toInt()
-  namespace = "${Artifact.BASE_ID}.sample"
+  namespace = "$group.sample"
 
   defaultConfig {
-    applicationId = "${Artifact.BASE_ID}.sample"
+    applicationId = "$group.sample"
     minSdk = libs.versions.minSdk.get().toInt()
     targetSdk = libs.versions.targetSdk.get().toInt()
-    versionCode = Artifact.VERSION_CODE
-    versionName = Artifact.VERSION_NAME
+    versionCode = sampleVersionCode()
+    versionName = sampleVersionName()
   }
 
   composeOptions {
@@ -46,6 +46,4 @@ android {
       isMinifyEnabled = false
     }
   }
-
-
 }

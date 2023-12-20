@@ -1,6 +1,5 @@
 import com.android.build.gradle.tasks.factory.AndroidUnitTest
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-import org.jetbrains.kotlin.gradle.targets.js.JS
 
 plugins {
   alias(libs.plugins.kotlin.multiplatform)
@@ -52,7 +51,6 @@ kotlin {
 
     val androidMain by getting {
       dependencies {
-
       }
     }
 
@@ -67,15 +65,13 @@ kotlin {
 
     val desktopMain by getting {
       dependencies {
-
       }
     }
   }
 }
 
-
 android {
-  namespace = "${Artifact.BASE_ID}.sample.common"
+  namespace = "$group.sample.common"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
   sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")

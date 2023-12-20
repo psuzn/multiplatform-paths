@@ -1,10 +1,11 @@
+import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
   alias(libs.plugins.android.library)
   alias(libs.plugins.kotlin.multiplatform)
   alias(libs.plugins.mavenPublish)
+  signing
 }
-
 
 kotlin {
 
@@ -31,22 +32,26 @@ kotlin {
 }
 
 android {
-  namespace = "${Artifact.BASE_ID}.contextProvider"
+  namespace = "$group.contextProvider"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
     minSdk = libs.versions.minSdk.get().toInt()
   }
 
-  buildTypes {
-    release {
-      isMinifyEnabled = false
-    }
-  }
-
   testOptions {
     unitTests {
       isIncludeAndroidResources = true
     }
+  }
+}
+
+mavenPublishing {
+  signAllPublications()
+  publishToMavenCentral(SonatypeHost.S01)
+
+  pom {
+    name.set("Platform Identifier")
+    description.set("Get android context anywhere on your android source-set.")
   }
 }

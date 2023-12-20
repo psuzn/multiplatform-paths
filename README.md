@@ -1,4 +1,4 @@
-# MP Utils
+# Multiplatform Utils
 
 MP Utils is a collection of a few utility libraries for developing multiplatform apps using Kotlin Multiplatform.
 
