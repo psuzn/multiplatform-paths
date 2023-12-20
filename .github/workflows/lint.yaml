@@ -33,10 +33,9 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-            !~/.gradle/wrapper/dists/**/gradle*.zip
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
-            gradle-${{ runner.os }}-
+            ${{ runner.os }}-gradle-
 
       - name: Build Project
-        run: ./gradlew build
+        run: ./gradlew build --no-daemon
