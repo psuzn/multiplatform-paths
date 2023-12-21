@@ -1,5 +1,8 @@
-object Artifact {
-  const val BASE_ID = "me.sujanpoudel.mputils"
-  const val VERSION_CODE = 1
-  const val VERSION_NAME = "1.0.0"
-}
+import org.gradle.api.Project
+
+
+fun Project.group() = property("GROUP") as String
+fun Project.versionName() = property("VERSION_NAME") as String
+
+fun Project.sampleVersionCode() = 1
+fun Project.sampleVersionName() = "0.0.1"

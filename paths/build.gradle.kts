@@ -1,9 +1,10 @@
-import org.jetbrains.kotlin.gradle.plugin.KotlinJsCompilerType.IR
+import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
   alias(libs.plugins.kotlin.multiplatform)
   alias(libs.plugins.android.library)
   alias(libs.plugins.mavenPublish)
+  signing
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -27,13 +28,14 @@ kotlin {
 
   js() {
     nodejs()
+    generateTypeScriptDefinitions()
   }
 
   sourceSets {
 
     val commonMain by getting {
       dependencies {
-        implementation(project(":platformIdentifier"))
+        implementation(project(":platform-identifier"))
         implementation(libs.kotlinx.io.core)
       }
     }
@@ -44,10 +46,9 @@ kotlin {
       }
     }
 
-
     val androidMain by getting {
       dependencies {
-        api(project(":contextProvider"))
+        api(project(":context-provider"))
       }
     }
 
@@ -90,15 +91,23 @@ kotlin {
 }
 
 android {
-  namespace = "${Artifact.BASE_ID}.paths"
+  namespace = "$group.paths"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
     minSdk = libs.versions.minSdk.get().toInt()
   }
+}
 
-  publishing {
-    singleVariant("release")
+@Suppress("ktlint:standard:max-line-length")
+mavenPublishing {
+  signAllPublications()
+  publishToMavenCentral(SonatypeHost.S01)
+
+  pom {
+    name.set("Paths")
+    description.set(
+      "Get platform specific app data and cache directory(equivalent to ApplicationInfo.dataDir or NSHomeDirectory) in Kotlin Multiplatform application",
+    )
   }
-
 }

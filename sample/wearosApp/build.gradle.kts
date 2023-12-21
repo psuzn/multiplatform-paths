@@ -15,8 +15,8 @@ kotlin {
     androidMain {
       dependencies {
         implementation(project(":sample:shared"))
-        implementation(project(":platformIdentifier"))
-        implementation (libs.appcompat)
+        implementation(project(":platform-identifier"))
+        implementation(libs.appcompat)
         implementation(libs.activity.compose)
       }
     }
@@ -24,15 +24,15 @@ kotlin {
 }
 
 android {
-  namespace = "${Artifact.BASE_ID}.sample.wearOs"
+  namespace = "$group.sample.wearOs"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
-    applicationId = "${Artifact.BASE_ID}.sample"
+    applicationId = "$group.sample"
     minSdk = 30
     targetSdk = libs.versions.targetSdk.get().toInt()
-    versionCode = Artifact.VERSION_CODE
-    versionName = Artifact.VERSION_NAME
+    versionCode = sampleVersionCode()
+    versionName = sampleVersionName()
 
     vectorDrawables {
       useSupportLibrary = true
@@ -54,5 +54,3 @@ android {
     }
   }
 }
-
-

@@ -1,0 +1,85 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+jobs:
+  release_artifacts:
+    strategy:
+      matrix:
+        os: [ 'macos-latest' ]
+    runs-on: ${{ matrix.os }}
+    env:
+      BUILDLESS_APIKEY: ${{ secrets.BUILDLESS_APIKEY }}
+
+    outputs:
+      VERSION_NAME: ${{ steps.extract_version_name.outputs.VERSION_NAME }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: "Setup: Buildless"
+        uses: buildless/setup@v1.0.2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: |
+            11
+            17
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@2.11.1
+
+      - name: Checkout Gradle Build Cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Get version name
+        id: extract_version_name
+        run: |
+          TAG=${{github.ref_name}}
+          VERSION_NAME="${TAG/v/""}"
+          echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_OUTPUT
+
+      - name: Prepare environment
+        env:
+          GPG_KEY_CONTENTS: ${{ secrets.GPG_KEY_CONTENTS }}
+          SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
+        run:  echo '$GPG_KEY_CONTENTS' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'
+
+      - name: Release Artifacts
+        run: |
+          ./gradlew publishAllPublicationsToMavenCentralRepository \
+          -PVERSION_NAME=${{ steps.extract_version_name.outputs.VERSION_NAME }} \
+          -PossrhUsername=${{ secrets.OSSRH_USERNAME }} \
+          -PossrhPassword=${{ secrets.OSSRH_PASSWORD }} \
+          -Psigning.keyId=${{ secrets.SIGNING_KEY_ID }} \
+          -Psigning.password=${{ secrets.SIGNING_KEY_PASSWORD }} \
+          -Psigning.secretKeyRingFile=${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
+
+  github_release:
+    needs: [ release_artifacts ]
+    name: Create Release
+    runs-on: ubuntu-latest
+    if: ${{ !endsWith(needs.release_artifacts.outputs.VERSION_NAME,"SNAPSHOT") }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Extract release notes
+        id: release_notes
+        uses: ffurrer2/extract-release-notes@v1
+
+      - name: Create release
+        uses: softprops/action-gh-release@v1
+        with:
+          body: ${{ steps.release_notes.outputs.release_notes }}

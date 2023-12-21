@@ -14,7 +14,7 @@ kotlin {
   sourceSets {
     commonMain {
       dependencies {
-        implementation(project(":platformIdentifier"))
+        implementation(project(":platform-identifier"))
         implementation(project(":paths"))
 
         implementation(libs.kotlinx.io.core)
@@ -22,4 +22,3 @@ kotlin {
     }
   }
 }
-
