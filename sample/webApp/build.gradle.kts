@@ -20,15 +20,13 @@ kotlin {
         implementation(compose.runtime)
         implementation(compose.foundation)
         implementation(compose.ui)
-        
+
         implementation(project(":sample:shared"))
       }
     }
   }
-
 }
 
 compose.experimental {
   web.application { }
 }
-

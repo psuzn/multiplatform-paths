@@ -1,10 +1,10 @@
-import org.jetbrains.kotlin.gradle.plugin.KotlinJsCompilerType.IR
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
   alias(libs.plugins.kotlin.multiplatform)
   alias(libs.plugins.android.library)
   alias(libs.plugins.mavenPublish)
+  signing
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -39,8 +39,8 @@ kotlin {
 
   js(IR) {
     nodejs()
-    browser{
-      testTask{
+    browser {
+      testTask {
         enabled = false
       }
     }
@@ -76,7 +76,6 @@ kotlin {
     }
 
     val appleMain by getting() {
-
     }
 
     val desktopCommonMain by creating {
@@ -90,12 +89,11 @@ kotlin {
     jsMain {
       dependsOn(desktopCommonMain)
     }
-
   }
 }
 
 android {
-  namespace = "${Artifact.BASE_ID}.platformIdentifier"
+  namespace = "$group.platformIdentifier"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
@@ -106,7 +104,7 @@ android {
         "armeabi-v7a",
         "arm64-v8a",
         "x86",
-        "x86_64"
+        "x86_64",
       )
     }
   }
@@ -115,5 +113,15 @@ android {
     unitTests {
       isIncludeAndroidResources = true
     }
+  }
+}
+
+mavenPublishing {
+  signAllPublications()
+  publishToMavenCentral(SonatypeHost.S01)
+
+  pom {
+    name.set("Platform Identifier")
+    description.set("Identify the current platform in Kotlin Multiplatform application")
   }
 }
