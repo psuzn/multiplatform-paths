@@ -76,11 +76,11 @@ directory on other platforms.
 #### Getting App cache directory
 
 ```kotlin
-import me.sujanpoudel.mputils.paths.applicationCacheDirectory
+import me.sujanpoudel.mputils.paths.appCacheDirectory
 
 val packageName = "example.com.app"
 
-val dataDirectory = applicationCacheDirectory(packageName)
+val dataDirectory = appCacheDirectory(packageName)
 ```
 
 This will return `Context.cacheDir` on android, `NSCachesDirectory` on IOS and equivalent platform specific caches
