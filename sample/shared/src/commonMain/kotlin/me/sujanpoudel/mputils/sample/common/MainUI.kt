@@ -13,8 +13,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import me.sujanpoudel.mputils.paths.appCacheDirectory
 import me.sujanpoudel.mputils.paths.appDataDirectory
-import me.sujanpoudel.mputils.paths.applicationCacheDir
 import me.sujanpoudel.mputils.platformIdentifier.Platform
 import me.sujanpoudel.mputils.platformIdentifier.platform
 
@@ -25,7 +25,7 @@ fun MainUI() {
   }
 
   val cacheDir = remember {
-    if (platform() !is Platform.JS.Browser) applicationCacheDir(Constants.appId) else "N/A"
+    if (platform() !is Platform.JS.Browser) appCacheDirectory(Constants.appId) else "N/A"
   }
 
   val scrollState = rememberScrollState()

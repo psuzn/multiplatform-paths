@@ -12,7 +12,7 @@ internal expect fun cacheDirectory(appId: String): Path
  * inaccessible from user and other application.
  *
  * @param appId unique app id, equivalent to packageName(android), bundle id (ios)
- * @param createDir whether explicitly should create the directory if it doesn't exists
+ * @param createDir whether explicitly should create the directory if it doesn't exist
  */
 fun appDataDirectory(appId: String, createDir: Boolean = true): Path = dataDirectory(appId).also {
   if (createDir) {
@@ -25,9 +25,9 @@ fun appDataDirectory(appId: String, createDir: Boolean = true): Path = dataDirec
  * on android it is context.cacheDir and on IOS/darwin it is NSCachesDirectory
  *
  * @param appId unique app id, equivalent to packageName(android), bundle id (ios)
- * @param createDir whether explicitly should create the directory if it doesn't exists
+ * @param createDir whether explicitly should create the directory if it doesn't exist
  */
-fun applicationCacheDir(appId: String, createDir: Boolean = true): Path = cacheDirectory(appId).also {
+fun appCacheDirectory(appId: String, createDir: Boolean = true): Path = cacheDirectory(appId).also {
   if (createDir) {
     SystemFileSystem.createDirectories(it)
   }
