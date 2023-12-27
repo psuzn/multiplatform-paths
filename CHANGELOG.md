@@ -7,6 +7,8 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 ### Changed
+- `applicationCacheDir` to `appCacheDirectory()`
+- Exposed `kotlinx-io-core` as a transitive dependency
 
 ### Deprecated
 
