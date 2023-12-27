@@ -1,7 +1,21 @@
-# Change log
+# Changelog
+
+All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [0.0.1-SNAPSHOT] - 2023-12-19
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [0.1.0] - 2023-12-21
 
 Initial Cut (Get it?).

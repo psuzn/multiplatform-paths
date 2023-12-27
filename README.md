@@ -2,6 +2,8 @@
 
 [![Maven Central](https://img.shields.io/maven-central/v/me.sujanpoudel.mputils/paths?label=version&color=blue)](https://search.maven.org/search?q=me.sujanpoudel.mputils)
 [![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/me.sujanpoudel.mputils/paths?label=snapshot&server=https%3A%2F%2Fs01.oss.sonatype.org)](https://s01.oss.sonatype.org/content/repositories/snapshots/me/sujanpoudel/mputils/)
+[![CI](https://github.com/psuzn/mp-utils/actions/workflows/CI.yaml/badge.svg)](https://github.com/psuzn/mp-utils/actions/workflows/CI.yaml)
+
 [![kotlin](https://img.shields.io/badge/kotlin-1.9.21-blue?logo=kotlin)](http://kotlinlang.org)
 [![compose-multiplatform](https://img.shields.io/badge/Compose_Multiplatform-1.5.11-blue?logo=jetpackcompose)](https://github.com/JetBrains/compose-jb)
 
@@ -142,13 +144,7 @@ sealed class Platform {
     data class IOS(override val arch: Arch, val version: String, val isSimulator: Boolean) : OS(arch)
     data class WatchOs(override val arch: Arch, val version: String, val isSimulator: Boolean) : OS(arch)
     data class TvOs(override val arch: Arch, val version: String, val isSimulator: Boolean) : OS(arch)
-    data class Android(
-      override val arch: Arch,
-      val buildNumber: Int,
-      val androidVersion: String,
-      val isWatch: Boolean,
-      val isTv: Boolean
-    ) : OS(arch)
+    data class Android(override val arch: Arch, val buildNumber: Int, val androidVersion: String, val isWatch: Boolean, val isTv: Boolean) : OS(arch)
 
     data class Linux(override val arch: Arch, val version: String) : OS(arch)
     data class Windows(override val arch: Arch, val version: String) : OS(arch)
