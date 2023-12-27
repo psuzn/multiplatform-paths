@@ -16,7 +16,7 @@ kotlin {
   jvm("desktop")
 
   iosArm64()
-  iosArm64()
+  iosX64()
   iosSimulatorArm64()
 
   tvosArm64()
