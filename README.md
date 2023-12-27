@@ -1,17 +1,26 @@
 # Multiplatform Utils
 
+[![Maven Central](https://img.shields.io/maven-central/v/me.sujanpoudel.mputils/paths?label=version&color=blue)](https://search.maven.org/search?q=me.sujanpoudel.mputils)
+[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/me.sujanpoudel.mputils/paths?label=snapshot&server=https%3A%2F%2Fs01.oss.sonatype.org)](https://s01.oss.sonatype.org/content/repositories/snapshots/me/sujanpoudel/mputils/)
+[![CI](https://github.com/psuzn/mp-utils/actions/workflows/CI.yaml/badge.svg)](https://github.com/psuzn/mp-utils/actions/workflows/CI.yaml)
+
+[![kotlin](https://img.shields.io/badge/kotlin-1.9.21-blue?logo=kotlin)](http://kotlinlang.org)
+[![compose-multiplatform](https://img.shields.io/badge/Compose_Multiplatform-1.5.11-blue?logo=jetpackcompose)](https://github.com/JetBrains/compose-jb)
+
+![license](https://img.shields.io/github/license/psuzn/mp-utils?label=License)
+
 MP Utils is a collection of a few utility libraries for developing multiplatform apps using Kotlin Multiplatform.
 
 ## Libraries
 
-- `me.sujanpoudel.mpUtils:paths` : Get platform specific app data and cache directory(equivalent
-  to `ApplicationInfo.dataDir` or `NSHomeDirectory`).
-- `me.sujanpoudel.mpUtils:platform-identifier` : Identify the current platform.
-- `me.sujanpoudel.mpUtils:context-provider` : Get android context anywhere on your android source-set.
+- `paths` : Get platform-specific app data and cache directory (equivalent
+  to `ApplicationInfo.dataDir` or `NSHomeDirectory` but for all the platforms).
+- `platform-identifier` : Identify the current platform.
+- `context-provider` : Get android context anywhere on your android source set.
 
 ## Table of content
 
-- [Paths](#Paths)
+- [Paths](#paths)
   - [Setup](#setup)
   - [Usage](#usage)
     - [Getting App data directory](#getting-app-data-directory)
@@ -21,18 +30,33 @@ MP Utils is a collection of a few utility libraries for developing multiplatform
   - [Usage](#usage-1)
     - [Get current running platform info](#get-current-running-platform-info)
     - [Possible return values](#possible-return-values)
-- [Context Provider](#Paths)
+- [Context Provider](#context-provider)
   - [Setup](#setup-2)
   - [Usage](#usage-2)
     - [Get Android Context]()
+- [Snapshots](#snapshots)
 - [Contributions](#contributions)
 - [License](#license)
 
 ## Paths
 
+![badge-JVM](https://img.shields.io/badge/JVM(desktop)-orange)
+![badge-Android](https://img.shields.io/badge/Android-dodgerblue?logo=android&logoColor=white)
+![badge-iOS](https://img.shields.io/badge/iOS-gray?logo=apple&logoColor=silver)
+![badge-macOS](https://img.shields.io/badge/macOS-gray?logo=apple&logoColor=silver)
+![badge-Js(Node)](https://img.shields.io/badge/Js(Node)-limegreen?logo=nodedotjs&logoColor=white)
+
 ### Setup
 
-> Coming soon!!
+```kotlin
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation("me.sujanpoudel.mputils:paths:0.0.1")
+}
+```
 
 ### Usage
 
@@ -72,9 +96,25 @@ directory on other platforms
 
 ## Platform Identifier
 
+![JVM(desktop)](https://img.shields.io/badge/JVM_(desktop)-orange?logo=freedesktopdoporg)
+![Android](https://img.shields.io/badge/Android-dodgerblue?logo=android&logoColor=white)
+![Android-native](https://img.shields.io/badge/Native-dodgerblue?logo=android&logoColor=white)
+![iOS](https://img.shields.io/badge/iOS-gray?logo=apple&logoColor=silver)
+![macOS](https://img.shields.io/badge/macOS-gray?logo=apple&logoColor=silver)
+![windows](https://img.shields.io/badge/Windows-deepskyblue?logo=windows&logoColor=white)
+![Js(Node)](https://img.shields.io/badge/Javascript-lightslategrey?logo=javascript&logoColor=white)
+
 ### Setup
 
-> Coming soon!!
+```kotlin
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation("me.sujanpoudel.mputils:platform-identifier:0.0.1")
+}
+```
 
 ### Usage
 
@@ -104,14 +144,7 @@ sealed class Platform {
     data class IOS(override val arch: Arch, val version: String, val isSimulator: Boolean) : OS(arch)
     data class WatchOs(override val arch: Arch, val version: String, val isSimulator: Boolean) : OS(arch)
     data class TvOs(override val arch: Arch, val version: String, val isSimulator: Boolean) : OS(arch)
-
-    data class Android(
-      override val arch: Arch,
-      val buildNumber: Int,
-      val androidVersion: String,
-      val isWatch: Boolean,
-      val isTv: Boolean
-    ) : OS(arch)
+    data class Android(override val arch: Arch, val buildNumber: Int, val androidVersion: String, val isWatch: Boolean, val isTv: Boolean) : OS(arch)
 
     data class Linux(override val arch: Arch, val version: String) : OS(arch)
     data class Windows(override val arch: Arch, val version: String) : OS(arch)
@@ -133,9 +166,19 @@ enum class Arch {
 
 ## Context Provider
 
+![Android](https://img.shields.io/badge/Android-dodgerblue?logo=android&logoColor=white)
+
 ### Setup
 
-> Coming soon!!
+```kotlin
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation("me.sujanpoudel.mputils:context-provider:0.0.1")
+}
+```
 
 ### Usage
 
@@ -146,6 +189,24 @@ import me.sujanpoudel.mputils.contextProvider.applicationContext
 
 val context = applicationContext
 
+```
+
+### Snapshots
+
+Snapshots of the development version are available in Sonatype's
+snapshots [repository](https://s01.oss.sonatype.org/content/repositories/snapshots/me/sujanpoudel/mputils/).
+
+```kotlin
+repositories {
+  mavenCentral()
+  maven("https://oss.sonatype.org/content/repositories/snapshots/")
+}
+
+dependencies {
+  implementation("me.sujanpoudel.mputils:paths:0.0.1-SNAPSHOT")
+  implementation("me.sujanpoudel.mputils:platform-identifier:0.0.1-SNAPSHOT")
+  implementation("me.sujanpoudel.mputils:context-provider:0.0.1-SNAPSHOT")
+}
 ```
 
 ### Contributions
