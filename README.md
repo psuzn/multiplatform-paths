@@ -54,7 +54,7 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.mputils:paths:0.0.1")
+  implementation("me.sujanpoudel.mputils:paths:0.1.1")
 }
 ```
 
@@ -112,7 +112,7 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.mputils:platform-identifier:0.0.1")
+  implementation("me.sujanpoudel.mputils:platform-identifier:0.1.1")
 }
 ```
 
@@ -176,7 +176,7 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.mputils:context-provider:0.0.1")
+  implementation("me.sujanpoudel.mputils:context-provider:0.1.1")
 }
 ```
 
@@ -203,9 +203,9 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.mputils:paths:0.0.1-SNAPSHOT")
-  implementation("me.sujanpoudel.mputils:platform-identifier:0.0.1-SNAPSHOT")
-  implementation("me.sujanpoudel.mputils:context-provider:0.0.1-SNAPSHOT")
+  implementation("me.sujanpoudel.mputils:paths:0.1.1-2-SNAPSHOT")
+  implementation("me.sujanpoudel.mputils:platform-identifier:0.1.1-2-SNAPSHOT")
+  implementation("me.sujanpoudel.mputils:context-provider:0.1.1-2-SNAPSHOT")
 }
 ```
 
