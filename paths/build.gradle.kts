@@ -16,7 +16,7 @@ kotlin {
   jvm("desktop")
 
   iosArm64()
-  iosArm64()
+  iosX64()
   iosSimulatorArm64()
 
   tvosArm64()
@@ -36,7 +36,7 @@ kotlin {
     val commonMain by getting {
       dependencies {
         implementation(project(":platform-identifier"))
-        implementation(libs.kotlinx.io.core)
+        api(libs.kotlinx.io.core)
       }
     }
 
@@ -48,7 +48,7 @@ kotlin {
 
     val androidMain by getting {
       dependencies {
-        api(project(":context-provider"))
+        implementation(project(":context-provider"))
       }
     }
 

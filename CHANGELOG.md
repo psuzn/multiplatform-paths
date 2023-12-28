@@ -5,8 +5,11 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added
+- `iosX64` target for `paths`
 
 ### Changed
+- `applicationCacheDir` to `appCacheDirectory()`
+- Exposed `kotlinx-io-core` as a transitive dependency
 
 ### Deprecated
 

@@ -1,7 +1,7 @@
 package me.sujanpoudel.mputils.sample
 
+import me.sujanpoudel.mputils.paths.appCacheDirectory
 import me.sujanpoudel.mputils.paths.appDataDirectory
-import me.sujanpoudel.mputils.paths.applicationCacheDir
 import me.sujanpoudel.mputils.platformIdentifier.platform
 
 const val appId = "me.sujanpoudel.mpUtils.sample"
@@ -24,5 +24,5 @@ fun main() {
   println("platform is: ${platform()}")
   println("Paths")
   println("Application directory: ${appDataDirectory(appId)}")
-  println("Cache directory: ${applicationCacheDir(appId)} \n\n")
+  println("Cache directory: ${appCacheDirectory(appId)} \n\n")
 }
