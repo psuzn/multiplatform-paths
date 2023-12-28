@@ -33,11 +33,10 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-            ~/.konan/dependencies
-             ~/.konan/cache
+            ~/.konan
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
 
       - name: Build Project
-        run: ./gradlew build --no-daemon
+        run: ./gradlew ktlintCheck test compileReleaseSources
