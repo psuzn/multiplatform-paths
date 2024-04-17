@@ -12,6 +12,7 @@ compose = "1.6.1"
 klint-plugin = "12.0.3"
 mavenPublish = "0.28.0"
 detekt = "1.23.6"
+binaryCompatibilityValidator = "0.15.0-Beta.2"
 
 # libraries
 ktlint = "1.2.1"
@@ -50,4 +51,5 @@ compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "klint-plugin" }
 mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+binaryCompatibilityValidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binaryCompatibilityValidator" }
 

@@ -39,6 +39,9 @@ jobs:
       - name: Lint and Static analysis
         run: ./gradlew detekt ktlintCheck --no-daemon  --stacktrace
 
+      - name: Validate api compatibility
+        run: ./gradlew apiCheck --no-daemon  --stacktrace
+
       - name: Build Artifacts
         run: ./gradlew publishToMavenLocal
 

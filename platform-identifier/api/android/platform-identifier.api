@@ -1,0 +1,175 @@
+public final class me/sujanpoudel/multiplatform/utils/platformIdentifier/BuildConfig {
+	public static final field BUILD_TYPE Ljava/lang/String;
+	public static final field DEBUG Z
+	public static final field LIBRARY_PACKAGE_NAME Ljava/lang/String;
+	public fun <init> ()V
+}
+
+public final class me/sujanpoudel/utils/platformIdentifier/Arch : java/lang/Enum {
+	public static final field ARM_X32 Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public static final field ARM_X64 Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public static final field UNKNOWN Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public static final field X64 Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public static final field X86 Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public static fun values ()[Lme/sujanpoudel/utils/platformIdentifier/Arch;
+}
+
+public abstract class me/sujanpoudel/utils/platformIdentifier/Platform {
+}
+
+public abstract class me/sujanpoudel/utils/platformIdentifier/Platform$JS : me/sujanpoudel/utils/platformIdentifier/Platform {
+}
+
+public final class me/sujanpoudel/utils/platformIdentifier/Platform$JS$Browser : me/sujanpoudel/utils/platformIdentifier/Platform$JS {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lme/sujanpoudel/utils/platformIdentifier/Platform$JS$Browser;
+	public static synthetic fun copy$default (Lme/sujanpoudel/utils/platformIdentifier/Platform$JS$Browser;Ljava/lang/String;ILjava/lang/Object;)Lme/sujanpoudel/utils/platformIdentifier/Platform$JS$Browser;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getUserAgent ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/sujanpoudel/utils/platformIdentifier/Platform$JS$Node : me/sujanpoudel/utils/platformIdentifier/Platform$JS {
+	public fun <init> (Lme/sujanpoudel/utils/platformIdentifier/Platform$OS;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Lme/sujanpoudel/utils/platformIdentifier/Platform$OS;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Lme/sujanpoudel/utils/platformIdentifier/Platform$OS;Ljava/lang/String;Ljava/lang/String;)Lme/sujanpoudel/utils/platformIdentifier/Platform$JS$Node;
+	public static synthetic fun copy$default (Lme/sujanpoudel/utils/platformIdentifier/Platform$JS$Node;Lme/sujanpoudel/utils/platformIdentifier/Platform$OS;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lme/sujanpoudel/utils/platformIdentifier/Platform$JS$Node;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getNodeVersion ()Ljava/lang/String;
+	public final fun getOs ()Lme/sujanpoudel/utils/platformIdentifier/Platform$OS;
+	public final fun getV8Version ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class me/sujanpoudel/utils/platformIdentifier/Platform$OS : me/sujanpoudel/utils/platformIdentifier/Platform {
+	public synthetic fun <init> (Lme/sujanpoudel/utils/platformIdentifier/Arch;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getArch ()Lme/sujanpoudel/utils/platformIdentifier/Arch;
+}
+
+public final class me/sujanpoudel/utils/platformIdentifier/Platform$OS$Android : me/sujanpoudel/utils/platformIdentifier/Platform$OS {
+	public fun <init> (Lme/sujanpoudel/utils/platformIdentifier/Arch;ILjava/lang/String;ZZ)V
+	public final fun component1 ()Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Z
+	public final fun component5 ()Z
+	public final fun copy (Lme/sujanpoudel/utils/platformIdentifier/Arch;ILjava/lang/String;ZZ)Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$Android;
+	public static synthetic fun copy$default (Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$Android;Lme/sujanpoudel/utils/platformIdentifier/Arch;ILjava/lang/String;ZZILjava/lang/Object;)Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$Android;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAndroidVersion ()Ljava/lang/String;
+	public fun getArch ()Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public final fun getBuildNumber ()I
+	public fun hashCode ()I
+	public final fun isTv ()Z
+	public final fun isWatch ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/sujanpoudel/utils/platformIdentifier/Platform$OS$IOS : me/sujanpoudel/utils/platformIdentifier/Platform$OS {
+	public fun <init> (Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;Z)V
+	public final fun component1 ()Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Z
+	public final fun copy (Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;Z)Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$IOS;
+	public static synthetic fun copy$default (Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$IOS;Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;ZILjava/lang/Object;)Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$IOS;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getArch ()Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public final fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isSimulator ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/sujanpoudel/utils/platformIdentifier/Platform$OS$Linux : me/sujanpoudel/utils/platformIdentifier/Platform$OS {
+	public fun <init> (Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;)V
+	public final fun component1 ()Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;)Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$Linux;
+	public static synthetic fun copy$default (Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$Linux;Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;ILjava/lang/Object;)Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$Linux;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getArch ()Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public final fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/sujanpoudel/utils/platformIdentifier/Platform$OS$MacOs : me/sujanpoudel/utils/platformIdentifier/Platform$OS {
+	public fun <init> (Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;)V
+	public final fun component1 ()Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;)Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$MacOs;
+	public static synthetic fun copy$default (Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$MacOs;Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;ILjava/lang/Object;)Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$MacOs;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getArch ()Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public final fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/sujanpoudel/utils/platformIdentifier/Platform$OS$TvOs : me/sujanpoudel/utils/platformIdentifier/Platform$OS {
+	public fun <init> (Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;Z)V
+	public final fun component1 ()Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Z
+	public final fun copy (Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;Z)Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$TvOs;
+	public static synthetic fun copy$default (Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$TvOs;Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;ZILjava/lang/Object;)Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$TvOs;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getArch ()Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public final fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isSimulator ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/sujanpoudel/utils/platformIdentifier/Platform$OS$Unknown : me/sujanpoudel/utils/platformIdentifier/Platform$OS {
+	public fun <init> (Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;)V
+	public final fun component1 ()Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;)Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$Unknown;
+	public static synthetic fun copy$default (Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$Unknown;Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;ILjava/lang/Object;)Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$Unknown;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getArch ()Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public final fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/sujanpoudel/utils/platformIdentifier/Platform$OS$WatchOs : me/sujanpoudel/utils/platformIdentifier/Platform$OS {
+	public fun <init> (Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;Z)V
+	public final fun component1 ()Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Z
+	public final fun copy (Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;Z)Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$WatchOs;
+	public static synthetic fun copy$default (Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$WatchOs;Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;ZILjava/lang/Object;)Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$WatchOs;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getArch ()Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public final fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isSimulator ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/sujanpoudel/utils/platformIdentifier/Platform$OS$Windows : me/sujanpoudel/utils/platformIdentifier/Platform$OS {
+	public fun <init> (Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;)V
+	public final fun component1 ()Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;)Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$Windows;
+	public static synthetic fun copy$default (Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$Windows;Lme/sujanpoudel/utils/platformIdentifier/Arch;Ljava/lang/String;ILjava/lang/Object;)Lme/sujanpoudel/utils/platformIdentifier/Platform$OS$Windows;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getArch ()Lme/sujanpoudel/utils/platformIdentifier/Arch;
+	public final fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/sujanpoudel/utils/platformIdentifier/Platform_androidKt {
+	public static final fun platform ()Lme/sujanpoudel/utils/platformIdentifier/Platform;
+}
+
