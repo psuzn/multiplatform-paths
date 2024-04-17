@@ -1,4 +1,3 @@
-import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
   id("packaging")
@@ -78,11 +77,8 @@ kotlin {
 
 @Suppress("ktlint:standard:max-line-length")
 mavenPublishing {
-  signAllPublications()
-  publishToMavenCentral(SonatypeHost.S01)
-
   pom {
-    name.set("Paths")
+    name.set("Multiplatform Paths")
     description.set(
       "Get platform specific app data and cache directory(equivalent to ApplicationInfo.dataDir or NSHomeDirectory) in Kotlin Multiplatform application",
     )

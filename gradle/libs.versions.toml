@@ -10,7 +10,7 @@ kotlin = "1.9.23"
 agp = "8.2.2"
 compose = "1.6.1"
 klint-plugin = "12.0.3"
-mavenPublish = "0.25.3"
+mavenPublish = "0.28.0"
 detekt = "1.23.6"
 
 # libraries

@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
+import com.vanniktech.maven.publish.MavenPublishBaseExtension
+import com.vanniktech.maven.publish.SonatypeHost
 import me.sujanpoudel.utils.apply
 import me.sujanpoudel.utils.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
-import org.gradle.kotlin.dsl.findByType
 import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.withType
 import org.gradle.plugins.signing.SigningExtension
@@ -36,6 +37,11 @@ class PackagingConventionPlugin : Plugin<Project> {
     }
 
     configurePublishingMetadata()
+
+    extensions.getByType<MavenPublishBaseExtension>().apply {
+      signAllPublications()
+      publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    }
   }
 }
 
@@ -72,7 +78,7 @@ fun Project.configurePublishingMetadata(): PublishingExtension = extensions.getB
     }
   }
 
-  extensions.findByType<SigningExtension>()?.apply {
+  extensions.getByType<SigningExtension>().apply {
     isRequired = true
   }
 }

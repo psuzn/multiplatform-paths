@@ -1,4 +1,3 @@
-import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
   id("module")
@@ -47,9 +46,6 @@ android {
 }
 
 mavenPublishing {
-  signAllPublications()
-  publishToMavenCentral(SonatypeHost.S01)
-
   pom {
     name.set("Platform Identifier")
     description.set("Get android context anywhere on your android source-set.")
