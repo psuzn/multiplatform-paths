@@ -4,20 +4,6 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-### Added
-
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
-
-## [0.2.0] - 2024-04-17
-
 This version contains general house keeping, dependencies updates and ci improvement for better maintainability.
 
 ### Breaking Changes

@@ -74,6 +74,8 @@ jobs:
       - name: Extract release notes
         id: release_notes
         uses: ffurrer2/extract-release-notes@v1
+        with:
+          prerelease: ${{ contains(needs.release_artifacts.outputs.VERSION_NAME,'alpha') || contains(needs.release_artifacts.outputs.VERSION_NAME,'beta') }}
 
       - name: Create release
         uses: softprops/action-gh-release@v1
