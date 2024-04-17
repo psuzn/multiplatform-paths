@@ -65,7 +65,7 @@ jobs:
     needs: [ release_artifacts ]
     name: Create Release
     runs-on: ubuntu-latest
-    if: ${{ !endsWith(needs.release_artifacts.outputs.VERSION_NAME,'SNAPSHOT') }}
+    if: ${{ !contains(needs.release_artifacts.outputs.VERSION_NAME,'SNAPSHOT') }}
     steps:
       - uses: actions/checkout@v4
 
