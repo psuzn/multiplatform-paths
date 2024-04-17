@@ -68,7 +68,6 @@ jobs:
     needs: [ release_artifacts ]
     name: Create Release
     runs-on: ubuntu-latest
-    if: ${{ !contains(needs.release_artifacts.outputs.VERSION_NAME,'SNAPSHOT') }}
     steps:
       - uses: actions/checkout@v4
 
@@ -79,4 +78,5 @@ jobs:
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
+          prerelease: ${{ contains(needs.release_artifacts.outputs.VERSION_NAME,'alpha') || contains(needs.release_artifacts.outputs.VERSION_NAME,'beta') }}
           body: ${{ steps.release_notes.outputs.release_notes }}
