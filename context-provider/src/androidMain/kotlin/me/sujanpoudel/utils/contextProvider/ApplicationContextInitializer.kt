@@ -23,6 +23,7 @@ import androidx.startup.Initializer
  * Application scoped context for current app session
  */
 lateinit var applicationContext: Context
+  private set
 
 internal class ApplicationContextInitializer : Initializer<Context> {
   override fun create(context: Context): Context = context.also {

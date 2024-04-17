@@ -1,0 +1,4 @@
+public final class me/sujanpoudel/utils/contextProvider/ApplicationContextInitializerKt {
+	public static final fun getApplicationContext ()Landroid/content/Context;
+}
+

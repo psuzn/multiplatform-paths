@@ -13,6 +13,7 @@ plugins {
   alias(libs.plugins.ktlint) apply false
   alias(libs.plugins.detekt) apply false
   alias(libs.plugins.mavenPublish) apply false
+  alias(libs.plugins.binaryCompatibilityValidator) apply false
   id("module")
   base
 }

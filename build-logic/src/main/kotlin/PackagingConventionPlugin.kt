@@ -34,6 +34,7 @@ class PackagingConventionPlugin : Plugin<Project> {
     with(pluginManager) {
       apply(libs.plugins.mavenPublish)
       apply("signing")
+      apply(libs.plugins.binaryCompatibilityValidator)
     }
 
     configurePublishingMetadata()

@@ -41,6 +41,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
+      - name: Validate api compatibility
+        run: ./gradlew apiCheck --no-daemon  --stacktrace
+
       - name: Get version name
         id: extract_version_name
         run: |
