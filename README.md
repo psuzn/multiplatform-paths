@@ -1,7 +1,6 @@
 # Multiplatform Paths
 
 [![Maven Central](https://img.shields.io/maven-central/v/me.sujanpoudel.multiplatform.utils/multiplatform-paths?label=version&color=blue)](https://search.maven.org/search?q=me.sujanpoudel.multiplatform.utils)
-![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/me.sujanpoudel.multiplatform.utils/multiplatform-paths?label=snapshot&server=https%3A%2F%2Fs01.oss.sonatype.org)
 [![CI](https://github.com/psuzn/multiplatform-paths/actions/workflows/CI.yaml/badge.svg)](https://github.com/psuzn/mp-utils/actions/workflows/CI.yaml)
 
 [![kotlin](https://img.shields.io/badge/kotlin-1.9.23-blue?logo=kotlin)](http://kotlinlang.org)
@@ -195,24 +194,6 @@ import android.content.Context
 
 val context: Context = applicationContext
 
-```
-
-### Snapshots
-
-Snapshots of the development version are available in Sonatype's
-snapshots [repository](https://s01.oss.sonatype.org/content/repositories/snapshots/me/sujanpoudel/multiplatform/utils).
-
-```kotlin
-repositories {
-  mavenCentral()
-  maven("https://oss.sonatype.org/content/repositories/snapshots/")
-}
-
-dependencies {
-  implementation("me.sujanpoudel.multiplatform.utils:multiplatform-paths:0.2.0-SNAPSHOT")
-  implementation("me.sujanpoudel.multiplatform.utils:platform-identifier:0.2.0-SNAPSHOT")
-  implementation("me.sujanpoudel.multiplatform.utils:context-provider:0.2.0-SNAPSHOT")
-}
 ```
 
 ### Contributions
