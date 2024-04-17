@@ -1,5 +1,5 @@
 import androidx.compose.ui.window.Window
-import me.sujanpoudel.mputils.sample.common.MainUI
+import me.sujanpoudel.utils.sample.common.MainUI
 import platform.AppKit.NSApp
 import platform.AppKit.NSApplication
 

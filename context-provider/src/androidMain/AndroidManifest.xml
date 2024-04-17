@@ -10,7 +10,7 @@
             tools:node="merge">
 
             <meta-data
-                android:name="me.sujanpoudel.mputils.contextProvider.ApplicationContextInitializer"
+                android:name="me.sujanpoudel.utils.contextProvider.ApplicationContextInitializer"
                 android:value="androidx.startup" />
         </provider>
 

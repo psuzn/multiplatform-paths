@@ -2,7 +2,7 @@ import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.singleWindowApplication
-import me.sujanpoudel.mputils.sample.common.MainDesktopView
+import me.sujanpoudel.utils.sample.common.MainDesktopView
 
 fun main() = singleWindowApplication(
   title = "Sample",

@@ -1,10 +1,10 @@
 import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
+  id("module")
+  id("packaging")
   alias(libs.plugins.android.library)
   alias(libs.plugins.kotlin.multiplatform)
-  alias(libs.plugins.mavenPublish)
-  signing
 }
 
 kotlin {
@@ -32,7 +32,7 @@ kotlin {
 }
 
 android {
-  namespace = "$group.contextProvider"
+  namespace = "${group()}.contextProvider"
   compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
