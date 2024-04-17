@@ -1,18 +1,19 @@
-
-
-
 # Multiplatform Paths
 
-[![Maven Central](https://img.shields.io/maven-central/v/me.sujanpoudel.multiplatform.utils/paths?label=version&color=blue)](https://search.maven.org/search?q=me.sujanpoudel.multiplatform.utils)
-[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/me.sujanpoudel.multiplatform.utils/paths?label=snapshot&server=https%3A%2F%2Fs01.oss.sonatype.org)](https://s01.oss.sonatype.org/content/repositories/snapshots/me/sujanpoudel/multiplatform/)
+[![Maven Central](https://img.shields.io/maven-central/v/me.sujanpoudel.multiplatform.utils/multiplatform-paths?label=version&color=blue)](https://search.maven.org/search?q=me.sujanpoudel.multiplatform.utils)
+![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/me.sujanpoudel.multiplatform.utils/multiplatform-paths?label=snapshot&server=https%3A%2F%2Fs01.oss.sonatype.org)
 [![CI](https://github.com/psuzn/multiplatform-paths/actions/workflows/CI.yaml/badge.svg)](https://github.com/psuzn/mp-utils/actions/workflows/CI.yaml)
 
-[![kotlin](https://img.shields.io/badge/kotlin-1.9.21-blue?logo=kotlin)](http://kotlinlang.org)
-[![compose-multiplatform](https://img.shields.io/badge/Compose_Multiplatform-1.5.11-blue?logo=jetpackcompose)](https://github.com/JetBrains/compose-jb)
+[![kotlin](https://img.shields.io/badge/kotlin-1.9.23-blue?logo=kotlin)](http://kotlinlang.org)
 
 ![license](https://img.shields.io/github/license/psuzn/multiplatform-paths?label=License)
 
-Platform-specific application home and cache directories for KMP
+Platform-specific application home and cache directories for KMP.
+<br />
+
+> **Note** <br />
+> Version 0.2.x has some breaking changes from v0.1.x. To update to 0.2.x please follow the [migration guide](https://github.com/psuzn/multiplatform-paths/blob/main/migration-guides.md##v01x-to-v2x)
+<br />
 
 ![badge-JVM](https://img.shields.io/badge/JVM(desktop)-orange)
 ![badge-Android](https://img.shields.io/badge/Android-dodgerblue?logo=android&logoColor=white)
@@ -44,7 +45,7 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.multiplatform.utils:multiplatform-paths:0.1.1")
+  implementation("me.sujanpoudel.multiplatform.utils:multiplatform-paths:0.2.0")
 }
 ```
 
@@ -116,7 +117,7 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.multiplatform.utils:platform-identifier:0.1.1")
+  implementation("me.sujanpoudel.multiplatform.utils:platform-identifier:0.2.0")
 }
 ```
 
@@ -180,7 +181,7 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.multiplatform.utils:context-provider:0.1.1")
+  implementation("me.sujanpoudel.multiplatform.utils:context-provider:0.2.0")
 }
 ```
 
@@ -199,7 +200,7 @@ val context: Context = applicationContext
 ### Snapshots
 
 Snapshots of the development version are available in Sonatype's
-snapshots [repository](https://s01.oss.sonatype.org/content/repositories/snapshots/me/sujanpoudel/multiplatform).
+snapshots [repository](https://s01.oss.sonatype.org/content/repositories/snapshots/me/sujanpoudel/multiplatform/utils).
 
 ```kotlin
 repositories {
@@ -208,9 +209,9 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.multiplatform.utils:paths:0.1.1-2-SNAPSHOT")
-  implementation("me.sujanpoudel.multiplatform.utils:platform-identifier:0.1.1-2-SNAPSHOT")
-  implementation("me.sujanpoudel.multiplatform.utils:context-provider:0.1.1-2-SNAPSHOT")
+  implementation("me.sujanpoudel.multiplatform.utils:multiplatform-paths:0.2.0-SNAPSHOT")
+  implementation("me.sujanpoudel.multiplatform.utils:platform-identifier:0.2.0-SNAPSHOT")
+  implementation("me.sujanpoudel.multiplatform.utils:context-provider:0.2.0-SNAPSHOT")
 }
 ```
 
