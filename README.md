@@ -3,14 +3,14 @@
 
 # Multiplatform Paths
 
-[![Maven Central](https://img.shields.io/maven-central/v/me.sujanpoudel.mputils/paths?label=version&color=blue)](https://search.maven.org/search?q=me.sujanpoudel.mputils)
-[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/me.sujanpoudel.mputils/paths?label=snapshot&server=https%3A%2F%2Fs01.oss.sonatype.org)](https://s01.oss.sonatype.org/content/repositories/snapshots/me/sujanpoudel/mputils/)
-[![CI](https://github.com/psuzn/mp-utils/actions/workflows/CI.yaml/badge.svg)](https://github.com/psuzn/mp-utils/actions/workflows/CI.yaml)
+[![Maven Central](https://img.shields.io/maven-central/v/me.sujanpoudel.multiplatform.utils/paths?label=version&color=blue)](https://search.maven.org/search?q=me.sujanpoudel.multiplatform.utils)
+[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/me.sujanpoudel.multiplatform.utils/paths?label=snapshot&server=https%3A%2F%2Fs01.oss.sonatype.org)](https://s01.oss.sonatype.org/content/repositories/snapshots/me/sujanpoudel/multiplatform/)
+[![CI](https://github.com/psuzn/multiplatform-paths/actions/workflows/CI.yaml/badge.svg)](https://github.com/psuzn/mp-utils/actions/workflows/CI.yaml)
 
 [![kotlin](https://img.shields.io/badge/kotlin-1.9.21-blue?logo=kotlin)](http://kotlinlang.org)
 [![compose-multiplatform](https://img.shields.io/badge/Compose_Multiplatform-1.5.11-blue?logo=jetpackcompose)](https://github.com/JetBrains/compose-jb)
 
-![license](https://img.shields.io/github/license/psuzn/mp-utils?label=License)
+![license](https://img.shields.io/github/license/psuzn/multiplatform-paths?label=License)
 
 Platform-specific application home and cache directories for KMP
 
@@ -44,7 +44,7 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.mputils:paths:0.1.1")
+  implementation("me.sujanpoudel.multiplatform.utils:multiplatform-paths:0.1.1")
 }
 ```
 
@@ -53,7 +53,7 @@ dependencies {
 #### App data directory
 
 ```kotlin
-import me.sujanpoudel.mputils.paths.appDataDirectory
+import me.sujanpoudel.utils.paths.appDataDirectory
 
 val packageName = "example.com.app"
 
@@ -66,7 +66,7 @@ directory on other platforms.
 #### App cache directory
 
 ```kotlin
-import me.sujanpoudel.mputils.paths.appCacheDirectory
+import me.sujanpoudel.utils.paths.appCacheDirectory
 
 val packageName = "example.com.app"
 
@@ -116,7 +116,7 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.mputils:platform-identifier:0.1.1")
+  implementation("me.sujanpoudel.multiplatform.utils:platform-identifier:0.1.1")
 }
 ```
 
@@ -125,7 +125,7 @@ dependencies {
 #### Get current running platform info
 
 ```kotlin
-import me.sujanpoudel.mputils.platformIdentifier.platform
+import me.sujanpoudel.multiplatform.utils.platformIdentifier.platform
 
 val currentPlatform = platform()
 
@@ -180,7 +180,7 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.mputils:context-provider:0.1.1")
+  implementation("me.sujanpoudel.multiplatform.utils:context-provider:0.1.1")
 }
 ```
 
@@ -189,16 +189,17 @@ dependencies {
 #### Get Android Context
 
 ```kotlin
-import me.sujanpoudel.mputils.contextProvider.applicationContext
+import me.sujanpoudel.utils.contextProvider.applicationContext
+import android.content.Context
 
-val context = applicationContext
+val context: Context = applicationContext
 
 ```
 
 ### Snapshots
 
 Snapshots of the development version are available in Sonatype's
-snapshots [repository](https://s01.oss.sonatype.org/content/repositories/snapshots/me/sujanpoudel/mputils/).
+snapshots [repository](https://s01.oss.sonatype.org/content/repositories/snapshots/me/sujanpoudel/multiplatform).
 
 ```kotlin
 repositories {
@@ -207,9 +208,9 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.mputils:paths:0.1.1-2-SNAPSHOT")
-  implementation("me.sujanpoudel.mputils:platform-identifier:0.1.1-2-SNAPSHOT")
-  implementation("me.sujanpoudel.mputils:context-provider:0.1.1-2-SNAPSHOT")
+  implementation("me.sujanpoudel.multiplatform.utils:paths:0.1.1-2-SNAPSHOT")
+  implementation("me.sujanpoudel.multiplatform.utils:platform-identifier:0.1.1-2-SNAPSHOT")
+  implementation("me.sujanpoudel.multiplatform.utils:context-provider:0.1.1-2-SNAPSHOT")
 }
 ```
 

@@ -1,0 +1,55 @@
+name: Build macOS
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    env:
+      GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx3g"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: JDK setup
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: corretto
+
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ./build
+            ./.gradle
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+            ~/.m2/repository
+            ~/.konan
+
+          key: ${{ runner.os }}-gradle-${{ hashFiles('*.gradle.kts') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Tests
+        run: ./gradlew allTests -x tvosSimulatorArm64Test -x watchosSimulatorArm64Test
+
+      - name: Mac build
+        run: |
+          ./gradlew \
+          publishIosArm64PublicationToMavenLocal \
+          publishIosSimulatorArm64PublicationToMavenLocal \
+          publishIosX64PublicationToMavenLocal \
+          publishMacosX64PublicationToMavenLocal \
+          publishMacosArm64PublicationToMavenLocal \
+          publishWatchosArm64PublicationToMavenLocal \
+          publishWatchosArm32PublicationToMavenLocal \
+          publishWatchosSimulatorArm64PublicationToMavenLocal \
+          publishTvosArm64PublicationToMavenLocal \
+          publishTvosSimulatorArm64PublicationToMavenLocal \
+          publishTvosX64PublicationToMavenLocal \
+          --no-daemon --stacktrace

@@ -1,6 +1,7 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTargetWithHostTests
 
 plugins {
+  id("module")
   alias(libs.plugins.kotlin.multiplatform)
   alias(libs.plugins.compose)
 }
@@ -20,7 +21,7 @@ kotlin {
 
     macosMain {
       dependencies {
-        implementation(project(":sample:shared"))
+        implementation(projects.sample.shared)
 
         implementation(compose.ui)
       }

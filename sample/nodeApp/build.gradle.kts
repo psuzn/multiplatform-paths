@@ -1,12 +1,12 @@
 plugins {
+  id("module")
   alias(libs.plugins.kotlin.multiplatform)
 }
 
 kotlin {
-  applyDefaultHierarchyTemplate()
 
   js(IR) {
-    nodejs {}
+    nodejs()
 
     binaries.executable()
   }
@@ -14,8 +14,8 @@ kotlin {
   sourceSets {
     commonMain {
       dependencies {
-        implementation(project(":platform-identifier"))
-        implementation(project(":paths"))
+        implementation(projects.platformIdentifier)
+        implementation(projects.multiplatformPaths)
 
         implementation(libs.kotlinx.io.core)
       }

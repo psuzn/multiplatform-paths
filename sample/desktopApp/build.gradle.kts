@@ -1,4 +1,5 @@
 plugins {
+  id("module")
   alias(libs.plugins.kotlin.multiplatform)
   alias(libs.plugins.compose)
 }
@@ -8,7 +9,7 @@ kotlin {
   sourceSets {
     val jvmMain by getting {
       dependencies {
-        implementation(project(":sample:shared"))
+        implementation(projects.sample.shared)
 
         implementation(compose.desktop.currentOs)
       }

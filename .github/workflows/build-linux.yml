@@ -1,0 +1,44 @@
+name: Build Linux
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx3g"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: JDK setup
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: corretto
+
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ./build
+            ./.gradle
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+            ~/.m2/repository
+            ~/.konan
+          key: ${{ runner.os }}-gradle-${{ hashFiles('*.gradle.kts') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Tests
+        run: ./gradlew allTest  --parallel --no-daemon --stacktrace
+
+      - name: Lint and Static analysis
+        run: ./gradlew detekt ktlintCheck --no-daemon  --stacktrace
+
+      - name: Build Artifacts
+        run: ./gradlew publishToMavenLocal
+
