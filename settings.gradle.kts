@@ -1,4 +1,4 @@
-rootProject.name = "MultiplatformIcons"
+rootProject.name = "Multiplatform_Utils"
 
 pluginManagement {
   includeBuild("build-logic")

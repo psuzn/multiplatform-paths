@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx3g"
 
     steps:
       - uses: actions/checkout@v4
@@ -32,22 +34,11 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Tests
-        run: ./gradlew allTest icon-generator-gradle-plugin:test --parallel --no-daemon --stacktrace
-        env:
-          GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx3g"
+        run: ./gradlew allTest  --parallel --no-daemon --stacktrace
 
       - name: Lint and Static analysis
         run: ./gradlew detekt ktlintCheck --no-daemon  --stacktrace
-        env:
-          GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx3g"
 
       - name: Build Artifacts
         run: ./gradlew publishToMavenLocal
-        env:
-          GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx3g"
 
-      - name: Build Sample
-        run: |
-          ./gradlew compileReleaseSources -x check --no-daemon  --stacktrace
-        env:
-          GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx3g"
