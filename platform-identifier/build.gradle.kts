@@ -1,4 +1,3 @@
-import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
   id("packaging")
@@ -82,9 +81,6 @@ android {
 }
 
 mavenPublishing {
-  signAllPublications()
-  publishToMavenCentral(SonatypeHost.S01)
-
   pom {
     name.set("Platform Identifier")
     description.set("Identify the current platform in Kotlin Multiplatform application")
