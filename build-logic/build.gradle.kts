@@ -1,6 +1,3 @@
-import io.gitlab.arturbosch.detekt.DetektPlugin
-import org.jlleitschuh.gradle.ktlint.KtlintPlugin
-
 /*
  * Copyright 2024 Sujan Poudel
  *
@@ -16,6 +13,9 @@ import org.jlleitschuh.gradle.ktlint.KtlintPlugin
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import io.gitlab.arturbosch.detekt.DetektPlugin
+import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 
 plugins {
   `kotlin-dsl`
