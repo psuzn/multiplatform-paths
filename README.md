@@ -7,12 +7,10 @@
 
 ![license](https://img.shields.io/github/license/psuzn/multiplatform-paths?label=License)
 
-Platform-specific application home and cache directories for KMP.
-<br />
+> [!NOTE]
+> Follow [migration guide](https://github.com/psuzn/multiplatform-paths/blob/main/migration-guides.md##v01x-to-v2x) to migrate from v0.1 to v0.2.
 
-> **Note** <br />
-> Version 0.2.x has some breaking changes from v0.1.x. To update to 0.2.x please follow the [migration guide](https://github.com/psuzn/multiplatform-paths/blob/main/migration-guides.md##v01x-to-v2x)
-<br />
+Platform-specific application home and cache directories for KMP.
 
 ![badge-JVM](https://img.shields.io/badge/JVM(desktop)-orange)
 ![badge-Android](https://img.shields.io/badge/Android-dodgerblue?logo=android&logoColor=white)
@@ -92,7 +90,6 @@ directory on other platforms
   - [Setup](#setup-2)
   - [Usage](#usage-2)
     - [Get Android Context]()
-- [Snapshots](#snapshots)
 - [Contributions](#contributions)
 - [License](#license)
 

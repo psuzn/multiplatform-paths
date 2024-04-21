@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+### Changed
+
+## [0.2.0] - 2024-04-21
+
 This version contains general house keeping, dependencies updates and ci improvement for better maintainability.
 
 ### Breaking Changes
@@ -11,6 +17,7 @@ This version contains general house keeping, dependencies updates and ci improve
 - Group name has been updated to `me.sujanpoudel.multiplatform.utils` from `me.sujanpoudel.mputils`
 - Artifact `paths` has been renamed to `multiplatform-paths`.
 
+> [!NOTE]
 > Follow [migration guide](https://github.com/psuzn/multiplatform-paths/blob/main/migration-guides.md##v01x-to-v2x) to migrate from v0.1 to v0.2.
 
 ## [0.1.1] - 2023-12-28
