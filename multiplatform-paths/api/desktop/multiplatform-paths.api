@@ -1,0 +1,22 @@
+public final class me/sujanpoudel/utils/paths/DirectoriesKt {
+	public static final fun appCacheDirectory (Ljava/lang/String;Z)Lkotlinx/io/files/Path;
+	public static synthetic fun appCacheDirectory$default (Ljava/lang/String;ZILjava/lang/Object;)Lkotlinx/io/files/Path;
+	public static final fun appDataDirectory (Ljava/lang/String;Z)Lkotlinx/io/files/Path;
+	public static synthetic fun appDataDirectory$default (Ljava/lang/String;ZILjava/lang/Object;)Lkotlinx/io/files/Path;
+}
+
+public final class me/sujanpoudel/utils/paths/Directories_desktopCommonKt {
+	public static final fun desktopAppHomeDirectory (Ljava/lang/String;Lme/sujanpoudel/utils/platformIdentifier/Platform$OS;Lkotlin/jvm/functions/Function1;)Lkotlinx/io/files/Path;
+	public static final fun desktopCacheDirectory (Ljava/lang/String;Lme/sujanpoudel/utils/platformIdentifier/Platform$OS;Lkotlin/jvm/functions/Function1;)Lkotlinx/io/files/Path;
+}
+
+public final class me/sujanpoudel/utils/paths/Directories_desktopKt {
+	public static final fun cacheDirectory (Ljava/lang/String;)Lkotlinx/io/files/Path;
+	public static final fun dataDirectory (Ljava/lang/String;)Lkotlinx/io/files/Path;
+}
+
+public final class me/sujanpoudel/utils/paths/utils/PathKt {
+	public static final fun div (Lkotlinx/io/files/Path;Ljava/lang/String;)Lkotlinx/io/files/Path;
+	public static final fun toPath (Ljava/lang/String;)Lkotlinx/io/files/Path;
+}
+

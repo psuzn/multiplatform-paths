@@ -1,50 +1,38 @@
-# Multiplatform Utils
+# Multiplatform Paths
 
-[![Maven Central](https://img.shields.io/maven-central/v/me.sujanpoudel.mputils/paths?label=version&color=blue)](https://search.maven.org/search?q=me.sujanpoudel.mputils)
-[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/me.sujanpoudel.mputils/paths?label=snapshot&server=https%3A%2F%2Fs01.oss.sonatype.org)](https://s01.oss.sonatype.org/content/repositories/snapshots/me/sujanpoudel/mputils/)
-[![CI](https://github.com/psuzn/mp-utils/actions/workflows/CI.yaml/badge.svg)](https://github.com/psuzn/mp-utils/actions/workflows/CI.yaml)
+[![Maven Central](https://img.shields.io/maven-central/v/me.sujanpoudel.multiplatform.utils/multiplatform-paths?label=version&color=blue)](https://search.maven.org/search?q=me.sujanpoudel.multiplatform.utils)
+[![CI](https://github.com/psuzn/multiplatform-paths/actions/workflows/CI.yaml/badge.svg)](https://github.com/psuzn/mp-utils/actions/workflows/CI.yaml)
 
-[![kotlin](https://img.shields.io/badge/kotlin-1.9.21-blue?logo=kotlin)](http://kotlinlang.org)
-[![compose-multiplatform](https://img.shields.io/badge/Compose_Multiplatform-1.5.11-blue?logo=jetpackcompose)](https://github.com/JetBrains/compose-jb)
+[![kotlin](https://img.shields.io/badge/kotlin-1.9.23-blue?logo=kotlin)](http://kotlinlang.org)
 
-![license](https://img.shields.io/github/license/psuzn/mp-utils?label=License)
+![license](https://img.shields.io/github/license/psuzn/multiplatform-paths?label=License)
 
-MP Utils is a collection of a few utility libraries for developing multiplatform apps using Kotlin Multiplatform.
+> [!NOTE]
+> Follow [migration guide](https://github.com/psuzn/multiplatform-paths/blob/main/migration-guides.md##v01x-to-v2x) to migrate from v0.1 to v0.2.
 
-## Libraries
-
-- `paths` : Get platform-specific app data and cache directory (equivalent
-  to `ApplicationInfo.dataDir` or `NSHomeDirectory` but for all the platforms).
-- `platform-identifier` : Identify the current platform.
-- `context-provider` : Get android context anywhere on your android source set.
-
-## Table of content
-
-- [Paths](#paths)
-  - [Setup](#setup)
-  - [Usage](#usage)
-    - [Getting App data directory](#getting-app-data-directory)
-    - [Getting App cache directory](#getting-app-cache-directory)
-- [Platform Identifier](#platform-identifier)
-  - [Setup](#setup-1)
-  - [Usage](#usage-1)
-    - [Get current running platform info](#get-current-running-platform-info)
-    - [Possible return values](#possible-return-values)
-- [Context Provider](#context-provider)
-  - [Setup](#setup-2)
-  - [Usage](#usage-2)
-    - [Get Android Context]()
-- [Snapshots](#snapshots)
-- [Contributions](#contributions)
-- [License](#license)
-
-## Paths
+Platform-specific application home and cache directories for KMP.
 
 ![badge-JVM](https://img.shields.io/badge/JVM(desktop)-orange)
 ![badge-Android](https://img.shields.io/badge/Android-dodgerblue?logo=android&logoColor=white)
 ![badge-iOS](https://img.shields.io/badge/iOS-gray?logo=apple&logoColor=silver)
 ![badge-macOS](https://img.shields.io/badge/macOS-gray?logo=apple&logoColor=silver)
 ![badge-Js(Node)](https://img.shields.io/badge/Js(Node)-limegreen?logo=nodedotjs&logoColor=white)
+
+- [Path Mapping](#setup)
+- [Setup](#setup)
+- [Usage](#usage)
+  - [App data directory](#app-data-directory)
+  - [App cache directory](#app-cache-directory)
+
+### Path Mapping
+
+| Platform              | Cache Directory                            | Data Directory                             |
+|-----------------------|--------------------------------------------|--------------------------------------------|
+| Android               | `context.cacheDir`                         | `ApplicationInfo.dataDir`                  |
+| IOS/IpadOs/WatchOs    | `NSCachesDirectory`                        | `NSHomeDirectory`                          |
+| Mac (native/jvm/node) | `~/Library/Caches/<app-id>`                | `~/Library/Application Support/<app-id>`   |
+| Windows (jvm/node)    | `C:\Users\<user>\AppData/Caches/<app-id>`  | `C:\Users\<user>\AppData/<app-id>>`        |
+| Linux (jvm/node)      | `~/.cache/<app-id>`                        |  `~/local/share/<app-id>`                  |
 
 ### Setup
 
@@ -54,16 +42,16 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.mputils:paths:0.0.1")
+  implementation("me.sujanpoudel.multiplatform.utils:multiplatform-paths:0.2.0")
 }
 ```
 
 ### Usage
 
-#### Getting app data directory
+#### App data directory
 
 ```kotlin
-import me.sujanpoudel.mputils.paths.appDataDirectory
+import me.sujanpoudel.utils.paths.appDataDirectory
 
 val packageName = "example.com.app"
 
@@ -73,10 +61,10 @@ val dataDirectory = appDataDirectory(packageName)
 This will return `ApplicationInfo.dataDir` on android, `NSHomeDirectory` on IOS and equivalent platform specific data
 directory on other platforms.
 
-#### Getting App cache directory
+#### App cache directory
 
 ```kotlin
-import me.sujanpoudel.mputils.paths.appCacheDirectory
+import me.sujanpoudel.utils.paths.appCacheDirectory
 
 val packageName = "example.com.app"
 
@@ -86,13 +74,26 @@ val dataDirectory = appCacheDirectory(packageName)
 This will return `Context.cacheDir` on android, `NSCachesDirectory` on IOS and equivalent platform specific caches
 directory on other platforms
 
-| Platform            | Cache Directory                     | Data Directory                             |
-|---------------------|-------------------------------------|--------------------------------------------|
-| Android             | `context.cacheDir`                  | `ApplicationInfo.dataDir`                  |
-| IOS/IpadOs/WatchOs  | `NSCachesDirectory`                 | `NSHomeDirectory`                          |
-| Mac Native/JVM/Node | `~/Library/Caches/<app-id>`         | `~/Library/Application Support/<app-id>`   |
-| Windows JVM/Node    | `C:\Users\<user>\AppData/<app-id>>` | `C:\Users\<user>\AppData/Cachaes/<app-id>` |
-| Linux JVM/Node      | `~/local/share/<app-id>`            | `~/.cache/<app-id>`                        |
+
+## Other Libraries from this Repository.
+- `platform-identifier` : Identify the current platform.
+- `context-provider` : Get android context anywhere on your android source set.
+
+## Table of content
+
+- [Platform Identifier](#platform-identifier)
+  - [Setup](#setup-1)
+  - [Usage](#usage-1)
+    - [Get current running platform info](#get-current-running-platform-info)
+    - [Possible return values](#possible-return-values)
+- [Context Provider](#context-provider)
+  - [Setup](#setup-2)
+  - [Usage](#usage-2)
+    - [Get Android Context]()
+- [Contributions](#contributions)
+- [License](#license)
+
+
 
 ## Platform Identifier
 
@@ -112,7 +113,7 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.mputils:platform-identifier:0.0.1")
+  implementation("me.sujanpoudel.multiplatform.utils:platform-identifier:0.2.0")
 }
 ```
 
@@ -121,7 +122,7 @@ dependencies {
 #### Get current running platform info
 
 ```kotlin
-import me.sujanpoudel.mputils.platformIdentifier.platform
+import me.sujanpoudel.multiplatform.utils.platformIdentifier.platform
 
 val currentPlatform = platform()
 
@@ -176,7 +177,7 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.mputils:context-provider:0.0.1")
+  implementation("me.sujanpoudel.multiplatform.utils:context-provider:0.2.0")
 }
 ```
 
@@ -185,28 +186,11 @@ dependencies {
 #### Get Android Context
 
 ```kotlin
-import me.sujanpoudel.mputils.contextProvider.applicationContext
+import me.sujanpoudel.utils.contextProvider.applicationContext
+import android.content.Context
 
-val context = applicationContext
+val context: Context = applicationContext
 
-```
-
-### Snapshots
-
-Snapshots of the development version are available in Sonatype's
-snapshots [repository](https://s01.oss.sonatype.org/content/repositories/snapshots/me/sujanpoudel/mputils/).
-
-```kotlin
-repositories {
-  mavenCentral()
-  maven("https://oss.sonatype.org/content/repositories/snapshots/")
-}
-
-dependencies {
-  implementation("me.sujanpoudel.mputils:paths:0.0.1-SNAPSHOT")
-  implementation("me.sujanpoudel.mputils:platform-identifier:0.0.1-SNAPSHOT")
-  implementation("me.sujanpoudel.mputils:context-provider:0.0.1-SNAPSHOT")
-}
 ```
 
 ### Contributions

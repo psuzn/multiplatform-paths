@@ -1,26 +1,26 @@
-import com.vanniktech.maven.publish.SonatypeHost
+/*
+ * Copyright 2024 Sujan Poudel
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 plugins {
-  alias(libs.plugins.kotlin.multiplatform)
-  alias(libs.plugins.android.library)
-  alias(libs.plugins.mavenPublish)
-  signing
+  id("packaging")
+  id("multiplatform-library")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
-  applyDefaultHierarchyTemplate()
-
-  androidTarget()
-
-  jvm("desktop")
-
-  iosArm64()
-  iosX64()
-  iosSimulatorArm64()
-
-  macosX64()
-  macosArm64()
 
   watchosArm32()
   watchosArm64()
@@ -66,7 +66,7 @@ kotlin {
       }
     }
 
-    val androidUnitTest by getting {
+    androidUnitTest {
       dependencies {
         implementation(libs.junit)
         implementation(libs.robolectric)
@@ -75,14 +75,11 @@ kotlin {
       }
     }
 
-    val appleMain by getting() {
-    }
-
     val desktopCommonMain by creating {
       dependsOn(commonMain)
     }
 
-    val desktopMain by getting {
+    desktopMain {
       dependsOn(desktopCommonMain)
     }
 
@@ -93,33 +90,12 @@ kotlin {
 }
 
 android {
-  namespace = "$group.platformIdentifier"
-  compileSdk = libs.versions.compileSdk.get().toInt()
-
   defaultConfig {
     minSdk = libs.versions.minSdk.get().toInt()
-
-    ndk {
-      abiFilters += listOf(
-        "armeabi-v7a",
-        "arm64-v8a",
-        "x86",
-        "x86_64",
-      )
-    }
-  }
-
-  testOptions {
-    unitTests {
-      isIncludeAndroidResources = true
-    }
   }
 }
 
 mavenPublishing {
-  signAllPublications()
-  publishToMavenCentral(SonatypeHost.S01)
-
   pom {
     name.set("Platform Identifier")
     description.set("Identify the current platform in Kotlin Multiplatform application")

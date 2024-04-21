@@ -1,8 +1,22 @@
-import org.jetbrains.compose.jetbrainsCompose
-import org.jetbrains.kotlin.gradle.dsl.jvm.JvmTargetValidationMode
-import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
-import org.jlleitschuh.gradle.ktlint.KtlintExtension
-import org.jlleitschuh.gradle.ktlint.KtlintPlugin
+/*
+ * Copyright 2024 Sujan Poudel
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import io.gitlab.arturbosch.detekt.Detekt
+import org.jlleitschuh.gradle.ktlint.tasks.KtLintCheckTask
+import org.jlleitschuh.gradle.ktlint.tasks.KtLintFormatTask
 
 
 plugins {
@@ -13,69 +27,21 @@ plugins {
   alias(libs.plugins.android.library) apply false
   alias(libs.plugins.compose) apply false
   alias(libs.plugins.ktlint) apply false
+  alias(libs.plugins.detekt) apply false
   alias(libs.plugins.mavenPublish) apply false
+  alias(libs.plugins.binaryCompatibilityValidator) apply false
+  id("module")
+  base
 }
 
-allprojects {
-  group = group()
-  version = versionName()
+tasks.withType<KtLintFormatTask> {
+  dependsOn(gradle.includedBuild("build-logic").task(":ktlintFormat"))
+}
 
-  apply<KtlintPlugin>()
+tasks.withType<KtLintCheckTask> {
+  dependsOn(gradle.includedBuild("build-logic").task(":ktlintCheck"))
+}
 
-  configure<KtlintExtension> {
-    version.set("0.50.0")
-  }
-
-  repositories {
-    google()
-    mavenCentral()
-    jetbrainsCompose()
-  }
-
-  tasks.withType<KotlinJvmCompile>().configureEach {
-    jvmTargetValidationMode.set(JvmTargetValidationMode.WARNING)
-  }
-
-  afterEvaluate {
-
-    extensions.findByType<PublishingExtension>()?.apply {
-
-      publications.withType<MavenPublication>().configureEach {
-
-        pom {
-          url.set("https://github.com/psuzn/mp-utils")
-
-          licenses {
-            license {
-              name.set("The Apache License, Version 2.0")
-              url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-              distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-            }
-          }
-
-          developers {
-            developer {
-              id.set("psuzn")
-              name.set("Sujan Poudel")
-              url.set("https://github.com/psuzn/")
-            }
-          }
-
-          scm {
-            connection.set("scm:git:https://github.com/psuzn/mp-utils.git")
-            developerConnection.set("scm:git:ssh://github.com/psuzn/mp-utils.git")
-            url.set("https://github.com/psuzn/mp-utils/tree/main")
-          }
-        }
-
-        repositories {
-          mavenLocal()
-        }
-      }
-
-      extensions.findByType<SigningExtension>()?.apply {
-        isRequired = true
-      }
-    }
-  }
+tasks.withType<Detekt> {
+  dependsOn(gradle.includedBuild("build-logic").task(":detekt"))
 }

@@ -338,7 +338,7 @@
 					"-framework",
 					shared,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.sujanpoudel.mputils.sample;
+				PRODUCT_BUNDLE_IDENTIFIER = me.sujanpoudel.multiplatform.utils.sample;
 				PRODUCT_NAME = Sample;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -376,7 +376,7 @@
 					"-framework",
 					shared,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.sujanpoudel.mputils.sample;
+				PRODUCT_BUNDLE_IDENTIFIER =  me.sujanpoudel.multiplatform.utils.sample;
 				PRODUCT_NAME = Sample;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

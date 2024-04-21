@@ -6,16 +6,19 @@ targetSdk = "34"
 compileSdk = "34"
 
 # plugins
-kotlin = "1.9.21"
-agp = "8.2.0"
-compose = "1.5.11"
-klint = "11.5.0"
-mavenPublish = "0.25.3"
+kotlin = "1.9.23"
+agp = "8.2.2"
+compose = "1.6.1"
+klint-plugin = "12.0.3"
+mavenPublish = "0.28.0"
+detekt = "1.23.6"
+binaryCompatibilityValidator = "0.15.0-Beta.2"
 
 # libraries
+ktlint = "1.2.1"
 startupRuntime = "1.1.1"
 kotlinxIoCore = "0.3.0"
-composeCompiler = "1.5.3"
+composeCompiler = "1.5.11"
 activityCompose = "1.8.2"
 coreKtx = "1.12.0"
 appcompat = "1.6.1"
@@ -45,6 +48,8 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "klint" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "klint-plugin" }
 mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+binaryCompatibilityValidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binaryCompatibilityValidator" }
 
