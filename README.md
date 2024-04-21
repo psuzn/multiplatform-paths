@@ -1,7 +1,7 @@
 # Multiplatform Paths
 
 [![Maven Central](https://img.shields.io/maven-central/v/me.sujanpoudel.multiplatform.utils/multiplatform-paths?label=version&color=blue)](https://search.maven.org/search?q=me.sujanpoudel.multiplatform.utils)
-[![CI](https://github.com/psuzn/multiplatform-paths/actions/workflows/CI.yaml/badge.svg)](https://github.com/psuzn/mp-utils/actions/workflows/CI.yaml)
+[![CI](https://github.com/psuzn/multiplatform-paths/actions/workflows/ci.yml/badge.svg)](https://github.com/psuzn/multiplatform-paths/actions/workflows/ci.yml)
 
 [![kotlin](https://img.shields.io/badge/kotlin-1.9.23-blue?logo=kotlin)](http://kotlinlang.org)
 
