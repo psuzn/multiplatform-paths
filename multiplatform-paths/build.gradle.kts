@@ -95,7 +95,7 @@ mavenPublishing {
   pom {
     name.set("Multiplatform Paths")
     description.set(
-      "Get platform specific app data and cache directory(equivalent to ApplicationInfo.dataDir or NSHomeDirectory) in Kotlin Multiplatform application",
+      "Get platform specific app data and cache directory(equivalent to ApplicationInfo.dataDir or NSApplicationSupportDirectory) in Kotlin Multiplatform application",
     )
   }
 }
