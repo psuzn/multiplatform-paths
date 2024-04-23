@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [0.2.1] - 2024-04-23
+
+### Fixes
+
+- NSHomeDirectory is only allowed to be written on iOS Simulators, but not on physical devices #33
+
 ## [0.2.0] - 2024-04-21
 
 This version contains general house keeping, dependencies updates and ci improvement for better maintainability.
