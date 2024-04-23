@@ -23,17 +23,13 @@ import me.sujanpoudel.utils.platformIdentifier.Platform
 import me.sujanpoudel.utils.platformIdentifier.platform
 import platform.Foundation.NSApplicationSupportDirectory
 import platform.Foundation.NSCachesDirectory
-import platform.Foundation.NSHomeDirectory
 import platform.Foundation.NSSearchPathForDirectoriesInDomains
 import platform.Foundation.NSUserDomainMask
 
-actual fun dataDirectory(appId: String): Path = if (platform() is Platform.OS.MacOs) {
+actual fun dataDirectory(appId: String): Path =
   NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, true)
     .firstOrNull()?.toString()?.toPath()
     ?.let { it / appId } ?: error("Unable to get 'NSApplicationSupportDirectory'")
-} else {
-  NSHomeDirectory().toPath()
-}
 
 actual fun cacheDirectory(appId: String): Path {
   val cachesDirectory = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, true)

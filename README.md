@@ -29,7 +29,7 @@ Platform-specific application home and cache directories for KMP.
 | Platform              | Cache Directory                            | Data Directory                             |
 |-----------------------|--------------------------------------------|--------------------------------------------|
 | Android               | `context.cacheDir`                         | `ApplicationInfo.dataDir`                  |
-| IOS/IpadOs/WatchOs    | `NSCachesDirectory`                        | `NSHomeDirectory`                          |
+| IOS/IpadOs/WatchOs    | `NSCachesDirectory`                        | `NSApplicationSupportDirectory`            |
 | Mac (native/jvm/node) | `~/Library/Caches/<app-id>`                | `~/Library/Application Support/<app-id>`   |
 | Windows (jvm/node)    | `C:\Users\<user>\AppData/Caches/<app-id>`  | `C:\Users\<user>\AppData/<app-id>>`        |
 | Linux (jvm/node)      | `~/.cache/<app-id>`                        |  `~/local/share/<app-id>`                  |
@@ -58,7 +58,7 @@ val packageName = "example.com.app"
 val dataDirectory = appDataDirectory(packageName)
 ```
 
-This will return `ApplicationInfo.dataDir` on android, `NSHomeDirectory` on IOS and equivalent platform specific data
+This will return `ApplicationInfo.dataDir` on android, `NSApplicationSupportDirectory` on IOS and equivalent platform specific data
 directory on other platforms.
 
 #### App cache directory
