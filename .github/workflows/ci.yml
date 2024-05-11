@@ -23,3 +23,6 @@ jobs:
     name: Build macOS
     uses: ./.github/workflows/build-macos.yml
 
+  build-windows:
+    name: Build Windows
+    uses: ./.github/workflows/build-windows.yml
