@@ -40,7 +40,7 @@ internal fun hostOs(osName: String, archName: String, version: String): Platform
   return when (hostOs(osName)) {
     DesktopOs.Macos -> Platform.OS.MacOs(arch, version)
     DesktopOs.Linux -> Platform.OS.Linux(arch, version)
-    DesktopOs.Windows -> Platform.OS.Linux(arch, version)
+    DesktopOs.Windows -> Platform.OS.Windows(arch, version)
     DesktopOs.Unknown -> Platform.OS.Unknown(arch, version)
   }
 }

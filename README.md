@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.multiplatform.utils:multiplatform-paths:0.2.0")
+  implementation("me.sujanpoudel.multiplatform.utils:multiplatform-paths:0.2.1")
 }
 ```
 
@@ -113,7 +113,7 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.multiplatform.utils:platform-identifier:0.2.0")
+  implementation("me.sujanpoudel.multiplatform.utils:platform-identifier:0.2.1")
 }
 ```
 
@@ -177,7 +177,7 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.multiplatform.utils:context-provider:0.2.0")
+  implementation("me.sujanpoudel.multiplatform.utils:context-provider:0.2.1")
 }
 ```
 
