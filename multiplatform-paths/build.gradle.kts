@@ -52,6 +52,15 @@ kotlin {
       }
     }
 
+    val androidUnitTest by getting {
+      dependencies {
+        implementation(libs.junit)
+        implementation(libs.ext.junit)
+        implementation(libs.espresso.core)
+        implementation(libs.robolectric)
+      }
+    }
+
     val darwinMain by creating {
       dependsOn(commonMain)
     }
@@ -86,6 +95,14 @@ kotlin {
 
     val tvosMain by getting {
       dependsOn(darwinMain)
+    }
+  }
+}
+
+android {
+  testOptions {
+    unitTests {
+      isIncludeAndroidResources = true
     }
   }
 }
