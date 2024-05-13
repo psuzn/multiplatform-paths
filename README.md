@@ -1,6 +1,6 @@
 # Multiplatform Paths
 
-[![Maven Central](https://img.shields.io/maven-central/v/me.sujanpoudel.multiplatform.utils/multiplatform-paths?label=version&color=blue)](https://search.maven.org/search?q=me.sujanpoudel.multiplatform.utils)
+[![Release](https://img.shields.io/github/v/release/psuzn/multiplatform-paths?label=version&color=blue)](https://github.com/psuzn/multiplatform-paths/releases/latest)
 [![CI](https://github.com/psuzn/multiplatform-paths/actions/workflows/ci.yml/badge.svg)](https://github.com/psuzn/multiplatform-paths/actions/workflows/ci.yml)
 
 [![kotlin](https://img.shields.io/badge/kotlin-1.9.23-blue?logo=kotlin)](http://kotlinlang.org)
@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.multiplatform.utils:multiplatform-paths:0.2.1")
+  implementation("me.sujanpoudel.multiplatform.utils:multiplatform-paths:0.2.2")
 }
 ```
 
@@ -113,7 +113,7 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.multiplatform.utils:platform-identifier:0.2.1")
+  implementation("me.sujanpoudel.multiplatform.utils:platform-identifier:0.2.2")
 }
 ```
 
@@ -177,7 +177,7 @@ repositories {
 }
 
 dependencies {
-  implementation("me.sujanpoudel.multiplatform.utils:context-provider:0.2.1")
+  implementation("me.sujanpoudel.multiplatform.utils:context-provider:0.2.2")
 }
 ```
 

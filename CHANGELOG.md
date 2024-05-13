@@ -6,7 +6,13 @@ All notable changes to this project will be documented in this file.
 
 ### Fixes
 
-- BUG] Wrong os type on Windows #36
+### Changes
+
+## [0.2.2] - 2024-05-13
+
+### Fixes
+
+- [BUG] Wrong os type on Windows #36
 
 ## [0.2.1] - 2024-04-23
 
