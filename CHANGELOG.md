@@ -4,9 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-### Added
+### Fixes
 
-### Changed
+- BUG] Wrong os type on Windows #36
+
+## [0.2.1] - 2024-04-23
+
+### Fixes
+
+- NSHomeDirectory is only allowed to be written on iOS Simulators, but not on physical devices #33
 
 ## [0.2.1] - 2024-04-23
 
